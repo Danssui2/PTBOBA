@@ -125,17 +125,15 @@ export default function AboutSection() {
                             text-[28px] xs:text-3xl sm:text-4xl md:text-5xl lg:text-[52px] mb-6
                             break-words transition-all duration-700 delay-100 ${
               heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              Membahagiakan{' '}
-              <span className="text-brand-green-light">Setiap</span>
-              {' '}Langkah Kehidupan
+              Bikin Orang Bahagia{' '} 
+              Lewat {' '}
+              <span className="text-brand-green-light">Produk & Lingkungan</span>
             </h2>
 
             <p className={`text-white/65 leading-relaxed text-lg mb-8 max-w-lg
                            transition-all duration-700 delay-200 ${
               heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              PT Bikin Orang Bahagia adalah perusahaan energi nasional yang berkomitmen menghadirkan
-              solusi berkelanjutan — dari hulu ke hilir — demi kesejahteraan masyarakat dan
-              kemajuan bangsa Indonesia.
+              PT Bikin Orang Bahagia (PT BOBA) adalah perusahaan yang bergerak di bidang industri tekstil, produk olahan, fashion brand, dan layanan green technology. PT BOBA menaungi brand fashion tsoecha.co dan sokyuut, serta layanan green technology — seluruhnya dipasarkan melalui Ponpin, platform marketplace ASEAN milik PT BOBA.
             </p>
 
             <div className={`flex flex-wrap gap-4 transition-all duration-700 delay-300 ${
@@ -182,7 +180,7 @@ export default function AboutSection() {
                   Tim Profesional Kami
                 </p>
                 <p className="text-white/60 text-sm mt-1">
-                  31.000+ karyawan berdedikasi
+                  1.000+ karyawan berdedikasi
                 </p>
               </div>
             </div>
@@ -197,10 +195,10 @@ export default function AboutSection() {
               </div>
               <div>
                 <p className="font-display font-extrabold text-brand-green-deep text-lg leading-none">
-                  Fortune 500
+                  Indonesia 100%
                 </p>
                 <p className="text-brand-gray-mid text-[12px] mt-0.5 font-medium">
-                  Global Recognition
+                  National Identity
                 </p>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Menu, X, ChevronDown, User, LogIn, UserPlus, Globe } from 'lucide-react'
+import { Menu, X, ChevronDown, User, LogIn, UserPlus } from 'lucide-react'
 
 const NAV_LINKS = [
   { label: 'Home',     href: 'https://ptbikinorangbahagia.com/#home' },
@@ -79,28 +79,8 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── TOP BAR ── */}
-      <div className="fixed top-0 inset-x-0 z-50 bg-brand-green text-white
-                      text-[11px] font-medium hidden md:flex items-center
-                      justify-between px-6 lg:px-12 h-8">
-        <span className="tracking-wide opacity-90">
-          Selamat datang di PT Bikin Orang Bahagia — Membahagiakan Setiap Langkah
-        </span>
-        <div className="flex items-center gap-4">
-          <button className="flex items-center gap-1 opacity-80 hover:opacity-100 transition-opacity">
-            <Globe size={12} />
-            <span>ID</span>
-            <ChevronDown size={10} />
-          </button>
-          <span className="opacity-30">|</span>
-          <a href="tel:135" className="opacity-80 hover:opacity-100 transition-opacity">
-            Call Center: 135
-          </a>
-        </div>
-      </div>
-
       {/* ── MAIN NAVBAR ── */}
-      <nav className={`fixed inset-x-0 z-40 transition-all duration-500 ${navBg} md:top-8 top-0`}>
+      <nav className={`fixed inset-x-0 z-40 transition-all duration-500 ${navBg} top-0`}>
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10
                         flex items-center justify-between h-16 md:h-[68px]">
 
