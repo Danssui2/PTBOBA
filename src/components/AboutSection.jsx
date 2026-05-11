@@ -116,7 +116,7 @@ export default function AboutSection() {
           {/* Left — copy */}
           <div>
             <div className={`transition-all duration-700 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <span className="section-chip" style={{ color: '#22A98A' }}>
+              <span className="section-chip" style={{ color: '#2DD4B0' }}>
                 &nbsp;Tentang Kami
               </span>
             </div>
@@ -187,7 +187,7 @@ export default function AboutSection() {
 
             {/* Floating badge */}
             <div className="absolute -bottom-4 right-8 bg-white rounded-2xl
-                            shadow-[0_16px_48px_rgba(22,97,82,0.25)]
+                            shadow-[0_16px_48px_rgba(27,168,130,0.25)]
                             px-5 py-4 flex items-center gap-3 z-10">
               <div className="w-10 h-10 rounded-xl bg-brand-green-pale
                               flex items-center justify-center shrink-0">
@@ -252,7 +252,7 @@ export default function AboutSection() {
             {/* Visi */}
             <div className="bg-white rounded-2xl p-8 md:p-10 shadow-sm
                             border border-brand-green-pale
-                            hover:shadow-[0_8px_40px_rgba(22,97,82,0.12)]
+                            hover:shadow-[0_8px_40px_rgba(27,168,130,0.12)]
                             transition-all duration-400 group">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-brand-green flex items-center justify-center">
@@ -272,7 +272,7 @@ export default function AboutSection() {
 
             {/* Misi */}
             <div className="bg-brand-green rounded-2xl p-8 md:p-10 shadow-sm
-                            hover:shadow-[0_8px_40px_rgba(22,97,82,0.35)]
+                            hover:shadow-[0_8px_40px_rgba(27,168,130,0.35)]
                             transition-all duration-400">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-white/15 flex items-center justify-center">
@@ -332,7 +332,7 @@ export default function AboutSection() {
                   key={p.title}
                   className={`group relative bg-white rounded-2xl p-7
                               border border-gray-100
-                              hover:border-transparent hover:shadow-[0_16px_56px_rgba(22,97,82,0.15)]
+                              hover:border-transparent hover:shadow-[0_16px_56px_rgba(27,168,130,0.15)]
                               transition-all duration-400 cursor-default
                               ${pillarsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                   style={{ transitionDelay: `${i * 100}ms`, transitionDuration: '600ms' }}
@@ -378,7 +378,7 @@ export default function AboutSection() {
         <div className="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
 
           <div className="text-center mb-16">
-            <span className="section-chip" style={{ color: '#22A98A' }}>
+            <span className="section-chip" style={{ color: '#2DD4B0' }}>
               &nbsp;Perjalanan Kami
             </span>
             <h3 className="font-display font-extrabold text-white text-3xl sm:text-4xl md:text-5xl">
@@ -395,7 +395,7 @@ export default function AboutSection() {
                   onClick={() => setActiveYear(m.year)}
                   className={`flex-shrink-0 px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
                     activeYear === m.year
-                      ? 'bg-brand-green text-white shadow-[0_0_20px_rgba(22,97,82,0.6)]'
+                      ? 'bg-brand-green text-white shadow-[0_0_20px_rgba(27,168,130,0.6)]'
                       : 'bg-white/8 text-white/50 hover:bg-white/15 hover:text-white'
                   }`}
                 >
