@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import AboutSection from './components/AboutSection'
@@ -8,11 +9,11 @@ import StrukturSection from './components/StrukturSection'
 import PartnerSection from './components/PartnerSection'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
+import InvestorPage from './components/InvestorPage'
 
-export default function App() {
+function HomePage() {
   return (
-    <div className="min-h-screen bg-white font-sans">
-      <Navbar />
+    <>
       <HeroSection />
       <AboutSection />
       <BrandSection />
@@ -21,7 +22,21 @@ export default function App() {
       <StrukturSection />
       <PartnerSection />
       <ContactSection />
-      <Footer />
-    </div>
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <div className="min-h-screen bg-white font-sans">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/investor-relations" element={<InvestorPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   )
 }

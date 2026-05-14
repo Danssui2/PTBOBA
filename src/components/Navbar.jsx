@@ -1,16 +1,17 @@
 import { useState, useEffect, useRef } from 'react'
-import { Menu, X, ChevronDown, User, LogIn, UserPlus, LayoutDashboard, LogOut } from 'lucide-react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Menu, X } from 'lucide-react'
 
 const NAV_LINKS = [
-  { label: 'Home',     href: '#home' },
-  { label: 'About',    href: '#about' },
-  { label: 'Brand',    href: '#brands' },
-  { label: 'Products', href: '#products' },
-  { label: 'Services', href: '#services' },
-  { label: 'Struktur', href: '#struktur' },
-  { label: 'Partner',  href: '#partner' },
-  { label: 'Contact',  href: '#contact' },
-  { label: 'Investor', href: '/investor-relations' },
+  { label: 'Home',     href: '#home',     section: 'home'     },
+  { label: 'About',    href: '#about',    section: 'about'    },
+  { label: 'Brand',    href: '#brands',   section: 'brands'   },
+  { label: 'Products', href: '#products', section: 'products' },
+  { label: 'Services', href: '#services', section: 'services' },
+  { label: 'Struktur', href: '#struktur', section: 'struktur' },
+  { label: 'Partner',  href: '#partner',  section: 'partner'  },
+  { label: 'Contact',  href: '#contact',  section: 'contact'  },
+  { label: 'Investor', href: '/investor-relations', section: null },
 ]
 
 const Logo = ({ scrolled }) => (
@@ -44,154 +45,160 @@ const Logo = ({ scrolled }) => (
 )
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [authOpen, setAuthOpen] = useState(false)
-  const [active, setActive]     = useState('Home')
-  const authRef = useRef(null)
+  const [scrolled,  setScrolled]  = useState(false)
+  const [menuOpen,  setMenuOpen]  = useState(false)
+  const [active,    setActive]    = useState('Home')
+  const location = useLocation()
+  const navigate = useNavigate()
+  const isInvestor = location.pathname === '/investor-relations'
 
+  /* ── scroll: transparent → solid ── */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    const handler = (e) => {
-      if (authRef.current && !authRef.current.contains(e.target)) setAuthOpen(false)
-    }
-    document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
-  }, [])
-
+  /* ── body lock when drawer open ── */
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  /* ── scroll-spy via IntersectionObserver ── */
+  useEffect(() => {
+    if (isInvestor) { setActive('Investor'); return }
+
+    const sectionIds = NAV_LINKS.filter(l => l.section).map(l => l.section)
+    const map = {}
+    NAV_LINKS.forEach(l => { if (l.section) map[l.section] = l.label })
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActive(map[entry.target.id] ?? 'Home')
+        })
+      },
+      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+    )
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id)
+      if (el) obs.observe(el)
+    })
+
+    return () => obs.disconnect()
+  }, [isInvestor, location.pathname])
+
+  /* ── handle nav link click ── */
+  const handleNavClick = (link) => {
+    setMenuOpen(false)
+
+    // Route link (investor page)
+    if (!link.section) return // let <Link> handle it
+
+    if (isInvestor) {
+      // On investor page → go to home then scroll to section
+      navigate('/')
+      setTimeout(() => {
+        const el = document.getElementById(link.section)
+        if (el) el.scrollIntoView({ behavior: 'smooth' })
+      }, 80)
+    } else {
+      // Already on home → just scroll
+      const el = document.getElementById(link.section)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   const navBg = scrolled
     ? 'bg-white shadow-[0_2px_24px_rgba(0,0,0,0.08)] backdrop-blur-xl'
     : 'bg-transparent'
+
+  const linkCls = (label) => {
+    const isActive = active === label
+    return `relative px-3 py-2 text-[13px] font-semibold tracking-wide
+            transition-colors duration-200 block group
+            ${scrolled
+              ? isActive ? 'text-brand-green' : 'text-brand-gray-dark hover:text-brand-green'
+              : isActive ? 'text-white'        : 'text-white/75 hover:text-white'
+            }`
+  }
+
+  const underlineCls = (label) =>
+    `absolute bottom-0 left-3 right-3 h-[2px] rounded-full bg-brand-green
+     transition-transform duration-200 origin-left
+     ${active === label ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`
+
+  const investorCls = (label) =>
+    `ml-3 px-4 py-2 text-[11.5px] font-bold tracking-widest uppercase
+     rounded-full transition-all duration-300 shadow-sm
+     ${active === label
+       ? 'bg-brand-green-deep text-white shadow-[0_4px_16px_rgba(27,168,130,0.5)]'
+       : scrolled
+         ? 'bg-brand-green text-white hover:bg-brand-green-deep hover:shadow-[0_4px_16px_rgba(27,168,130,0.4)]'
+         : 'bg-brand-green text-white hover:bg-brand-green-deep hover:shadow-[0_4px_20px_rgba(27,168,130,0.5)]'
+     }`
 
   return (
     <>
       <nav className={`fixed inset-x-0 top-0 z-40 transition-all duration-400 ${navBg}`}>
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10
-                        flex items-center justify-between h-[68px]">
+                        flex items-center h-[68px]">
 
           {/* Logo */}
-          <a href="/" className="shrink-0">
+          <Link to="/" className="shrink-0">
             <Logo scrolled={scrolled} />
-          </a>
+          </Link>
 
-          {/* Desktop nav */}
-          <ul className="hidden xl:flex items-center">
-            {NAV_LINKS.map((link, i) => (
+          {/* Desktop nav — right aligned */}
+          <ul className="hidden xl:flex items-center justify-end flex-1 gap-1">
+            {NAV_LINKS.map((link) => (
               <li key={link.label}>
-                {link.highlight ? (
-                  <a href={link.href} onClick={() => setActive(link.label)}
-                     className={`ml-2 flex items-center px-3 py-1.5 text-[11.5px] font-bold
-                                 tracking-widest uppercase rounded-md border transition-all duration-300
-                                 ${scrolled
-                                   ? 'text-brand-green border-brand-green/50 hover:bg-brand-green hover:text-white'
-                                   : 'text-brand-green-light border-brand-green-light/50 hover:bg-brand-green-light hover:text-white'
-                                 }`}>
+                {link.section === null ? (
+                  /* Investor — prominent pill button */
+                  <Link to={link.href} className={investorCls(link.label)}>
                     {link.label}
-                  </a>
+                  </Link>
                 ) : (
-                  <a href={link.href} onClick={() => setActive(link.label)}
-                     className={`nav-link-underline relative px-3 py-2 text-[13px] font-semibold
-                                 tracking-wide transition-colors duration-200 block
-                                 ${scrolled
-                                   ? active === link.label
-                                     ? 'text-brand-green active-dark'
-                                     : 'text-brand-gray-dark hover:text-brand-green'
-                                   : active === link.label
-                                     ? 'text-white active'
-                                     : 'text-white/75 hover:text-white'
-                                 }`}>
+                  /* Section links */
+                  <button
+                    onClick={() => handleNavClick(link)}
+                    className={linkCls(link.label)}
+                  >
                     {link.label}
-                  </a>
+                    <span className={underlineCls(link.label)} />
+                  </button>
                 )}
               </li>
             ))}
           </ul>
 
-          {/* Auth — desktop */}
-          <div className="hidden xl:flex items-center gap-2">
-            <div className="relative" ref={authRef}>
-              <button onClick={() => setAuthOpen(!authOpen)}
-                      className={`flex items-center gap-2 text-[13px] font-semibold
-                                  px-3 py-2 rounded-md transition-all duration-200
-                                  ${scrolled
-                                    ? 'text-brand-gray-dark hover:text-brand-green hover:bg-brand-green-pale'
-                                    : 'text-white/75 hover:text-white hover:bg-white/10'
-                                  }`}>
-                <LogIn size={15} />
-                Login
-                <ChevronDown size={13} className={`transition-transform duration-300 ${authOpen ? 'rotate-180' : ''}`} />
-              </button>
-
-              {authOpen && (
-                <div className="absolute right-0 top-full mt-2 w-52
-                                bg-white border border-gray-100 rounded-2xl
-                                shadow-[0_8px_40px_rgba(0,0,0,0.12)] overflow-hidden z-50">
-                  <div className="px-4 py-3 border-b border-gray-100 bg-brand-green-pale">
-                    <p className="text-brand-green text-[11px] uppercase tracking-widest font-bold">
-                      Masuk sebagai
-                    </p>
-                  </div>
-                  {['Mitra Bisnis', 'Karyawan', 'Admin'].map((role) => (
-                    <button key={role}
-                      className="w-full text-left px-4 py-2.5 text-[13px] text-gray-600
-                                 hover:text-brand-green hover:bg-brand-green-pale
-                                 transition-colors flex items-center gap-2.5">
-                      <User size={13} className="text-brand-green" />
-                      {role}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <a href="/register"
-               className="flex items-center gap-2 bg-brand-green text-white
-                          text-[13px] font-bold px-4 py-2 rounded-md
-                          hover:bg-brand-green-dark transition-all duration-300
-                          hover:shadow-[0_4px_20px_rgba(27,168,130,0.4)]">
-              <UserPlus size={14} />
-              Register
-            </a>
-          </div>
-
-          {/* Mobile */}
-          <div className="xl:hidden flex items-center gap-1">
-            <a href="/login" className={`p-2 transition-colors ${scrolled ? 'text-brand-gray-dark' : 'text-white/75 hover:text-white'}`}>
-              <LogIn size={20} />
-            </a>
-            <button onClick={() => setMenuOpen(!menuOpen)}
-                    className={`p-2 transition-colors ${scrolled ? 'text-brand-gray-dark' : 'text-white/75 hover:text-white'}`}
-                    aria-label="Toggle menu">
+          {/* Mobile hamburger */}
+          <div className="xl:hidden flex items-center ml-auto">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className={`p-2 transition-colors ${scrolled ? 'text-brand-gray-dark' : 'text-white/80 hover:text-white'}`}
+              aria-label="Toggle menu"
+            >
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
-        {/* Scrolled bottom line */}
-        {scrolled && (
-          <div className="absolute bottom-0 inset-x-0 h-[1px] bg-gray-100" />
-        )}
+        {scrolled && <div className="absolute bottom-0 inset-x-0 h-[1px] bg-gray-100" />}
       </nav>
 
-      {/* Mobile Drawer */}
+      {/* ── Mobile Drawer ── */}
       <div className={`xl:hidden fixed inset-0 z-30 transition-all duration-300
                        ${menuOpen ? 'visible opacity-100' : 'invisible opacity-0'}`}>
         <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"
              onClick={() => setMenuOpen(false)} />
 
-        <div className={`absolute top-0 right-0 h-full w-[300px] bg-white
+        <div className={`absolute top-0 right-0 h-full w-[280px] bg-white
                          shadow-2xl transition-transform duration-300 flex flex-col
                          ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+
           <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 mt-[68px]">
             <Logo scrolled={true} />
             <button onClick={() => setMenuOpen(false)} className="p-1.5 text-gray-400 hover:text-gray-700">
@@ -199,42 +206,42 @@ export default function Navbar() {
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto py-2 scrollbar-hide">
-            {NAV_LINKS.map((link) => (
-              <a key={link.label} href={link.href}
-                 onClick={() => { setActive(link.label); setMenuOpen(false) }}
-                 className={`flex items-center justify-between px-6 py-3.5
-                             text-[14px] font-semibold border-b border-gray-50
-                             transition-all duration-200
-                             ${link.highlight
-                               ? 'text-brand-green hover:bg-brand-green-pale'
-                               : active === link.label
-                                 ? 'text-brand-green bg-brand-green-pale'
-                                 : 'text-gray-600 hover:text-brand-green hover:bg-brand-green-pale'
-                             }`}>
-                <span>{link.label}</span>
-                {link.highlight && (
+          <div className="flex-1 overflow-y-auto py-2">
+            {NAV_LINKS.map((link) =>
+              link.section === null ? (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className={`flex items-center justify-between px-6 py-3.5
+                              text-[14px] font-semibold border-b border-gray-50
+                              transition-all duration-200
+                              ${active === link.label
+                                ? 'text-brand-green bg-brand-green-pale'
+                                : 'text-brand-green hover:bg-brand-green-pale'
+                              }`}
+                >
+                  <span>{link.label}</span>
                   <span className="text-[10px] bg-brand-green text-white px-2 py-0.5 rounded font-bold tracking-wider">
                     IR
                   </span>
-                )}
-              </a>
-            ))}
-          </div>
-
-          <div className="px-5 py-5 border-t border-gray-100 flex flex-col gap-3">
-            <a href="/login"
-               className="flex items-center justify-center gap-2 w-full py-3
-                          border border-gray-200 rounded-xl text-gray-600 font-semibold
-                          text-[14px] hover:border-brand-green hover:text-brand-green transition-all">
-              <LogIn size={16} /> Login
-            </a>
-            <a href="/register"
-               className="flex items-center justify-center gap-2 w-full py-3
-                          bg-brand-green rounded-xl text-white font-bold
-                          text-[14px] hover:bg-brand-green-dark transition-all">
-              <UserPlus size={16} /> Register
-            </a>
+                </Link>
+              ) : (
+                <button
+                  key={link.label}
+                  onClick={() => handleNavClick(link)}
+                  className={`w-full text-left flex items-center px-6 py-3.5
+                              text-[14px] font-semibold border-b border-gray-50
+                              transition-all duration-200
+                              ${active === link.label
+                                ? 'text-brand-green bg-brand-green-pale'
+                                : 'text-gray-600 hover:text-brand-green hover:bg-brand-green-pale'
+                              }`}
+                >
+                  {link.label}
+                </button>
+              )
+            )}
           </div>
         </div>
       </div>
