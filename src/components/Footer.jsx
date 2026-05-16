@@ -1,7 +1,19 @@
+import { Link } from 'react-router-dom'
 import { Mail, Phone, MapPin, Instagram, Twitter, Youtube, Linkedin, ArrowUp } from 'lucide-react'
 import data from '../data/footer.json'
 
 const ICON_MAP = { Mail, Phone, MapPin, Instagram, Twitter, Youtube, Linkedin }
+
+// "#about" → "/#about" agar selalu relative ke root, bukan route saat ini
+function resolveHref(href) {
+  if (href && href.startsWith('#')) return '/' + href
+  return href
+}
+
+// Link eksternal (https://) tetap pakai <a>, semua yang diawali "/" pakai <Link>
+function isExternal(href) {
+  return href && (href.startsWith('http://') || href.startsWith('https://'))
+}
 
 const Logo = () => (
   <div className="flex items-center gap-3">
@@ -35,11 +47,12 @@ export default function Footer() {
             <p className="text-white/50 text-sm font-medium">Brand di bawah PT Bikin Orang Bahagia:</p>
             <div className="flex items-center gap-3">
               {topBrands.map(b => (
-                <a key={b.name} href={b.href}
+                // "#brands" → "/#brands" → pakai Link agar client-side
+                <Link key={b.name} to={resolveHref(b.href)}
                    className="flex items-center gap-2 px-4 py-1.5 rounded-full hover:opacity-80 transition-opacity duration-200"
                    style={{ backgroundColor: b.bg }}>
                   <span className="font-display font-extrabold text-xs" style={{ color: b.text }}>{b.name}</span>
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -52,7 +65,9 @@ export default function Footer() {
 
           {/* Brand col */}
           <div className="xl:col-span-2">
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
             <p className="mt-5 text-white/55 text-sm leading-relaxed max-w-xs">{brand.tagline}</p>
             <div className="mt-6 space-y-2.5">
               {[
@@ -73,6 +88,7 @@ export default function Footer() {
               {socials.map(s => {
                 const Icon = ICON_MAP[s.icon]
                 return (
+                  // Sosmed → eksternal, tetap <a target="_blank">
                   <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
                      className="w-9 h-9 rounded-lg bg-white/8 border border-white/10 flex items-center justify-center text-white/50 hover:bg-brand-green hover:text-white hover:border-brand-green transition-all duration-300">
                     <Icon size={15} />
@@ -89,19 +105,35 @@ export default function Footer() {
                 {group.title}
               </h4>
               <ul className="space-y-3">
-                {group.links.map(link => (
-                  <li key={link.label}>
-                    <a href={link.href}
-                       className="flex items-center gap-2 text-white/50 text-sm hover:text-brand-green-light transition-colors duration-200 group">
-                      <span className="group-hover:translate-x-0.5 transition-transform duration-200">{link.label}</span>
-                      {link.badge && (
-                        <span className="text-[9px] font-bold bg-brand-green/30 text-brand-green-light px-1.5 py-0.5 rounded-full uppercase tracking-wide">
-                          {link.badge}
-                        </span>
+                {group.links.map(link => {
+                  const resolved = resolveHref(link.href) // "#about" → "/#about"
+                  const linkClass = "flex items-center gap-2 text-white/50 text-sm hover:text-brand-green-light transition-colors duration-200 group"
+                  const badge = link.badge && (
+                    <span className="text-[9px] font-bold bg-brand-green/30 text-brand-green-light px-1.5 py-0.5 rounded-full uppercase tracking-wide">
+                      {link.badge}
+                    </span>
+                  )
+                  const label = (
+                    <span className="group-hover:translate-x-0.5 transition-transform duration-200">{link.label}</span>
+                  )
+
+                  return (
+                    <li key={link.label}>
+                      {isExternal(resolved) ? (
+                        // Link eksternal → <a target="_blank">
+                        <a href={resolved} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                          {label}{badge}
+                        </a>
+                      ) : (
+                        // Semua link internal (route & anchor) → <Link to>
+                        // React Router akan set hash di URL, ScrollToTop di App.jsx yang handle scroll-nya
+                        <Link to={resolved} className={linkClass}>
+                          {label}{badge}
+                        </Link>
                       )}
-                    </a>
-                  </li>
-                ))}
+                    </li>
+                  )
+                })}
               </ul>
             </div>
           ))}
@@ -131,7 +163,7 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-5">
             {bottomLinks.map(l => (
-              <a key={l} href="#" className="text-white/30 text-xs hover:text-white/60 transition-colors">{l}</a>
+              <Link key={l} to="/" className="text-white/30 text-xs hover:text-white/60 transition-colors">{l}</Link>
             ))}
           </div>
           <button onClick={scrollToTop} aria-label="Kembali ke atas"

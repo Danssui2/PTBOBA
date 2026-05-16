@@ -24,14 +24,14 @@
     "chip": "Arah Perusahaan",
     "title": "Visi & Misi Kami",
     "visi": {
-      "title": "Menjadi Perusahaan Energi Nasional Kelas Dunia",
-      "desc": "Kami beraspirasi menjadi perusahaan terdepan dalam industri energi, yang diakui secara global atas inovasi, keberlanjutan, dan kontribusi nyata bagi kemakmuran bangsa Indonesia."
+      "title": "Menjadi Perusahaan Terdepan di Industri Fashion dan Green Technology",
+      "desc": "Menjadi perusahaan terdepan di industri fashion dan green technology yang membahagiakan masyarakat dan menjaga keberlanjutan lingkungan."
     },
     "misi": [
-      "Menjalankan usaha minyak, gas, serta energi baru & terbarukan secara terintegrasi.",
-      "Memaksimalkan nilai perusahaan melalui inovasi, tata kelola baik, dan SDM unggul.",
-      "Memberikan manfaat optimal bagi pemegang saham, pelanggan, dan masyarakat.",
-      "Mendukung ketahanan energi nasional dan agenda keberlanjutan Indonesia."
+      "Menghadirkan fashion berkualitas & modern.",
+      "Memberdayakan ekonomi kreatif lokal.",
+      "Mengembangkan green technology berkelanjutan.",
+      "Membangun ekosistem bisnis yang menguntungkan investor."
     ]
   },
   "pillars": {
@@ -40,21 +40,21 @@
     "ctaLabel": "Lihat Semua Layanan",
     "ctaHref": "#services",
     "items": [
-      { "icon": "Zap",         "title": "Ketahanan Energi",      "desc": "Memastikan ketersediaan energi yang andal dan terjangkau untuk seluruh masyarakat Indonesia dari Sabang sampai Merauke.",            "color": "from-brand-green to-brand-green-mid" },
-      { "icon": "Leaf",        "title": "Energi Berkelanjutan",  "desc": "Berkomitmen mengurangi emisi karbon dan mengembangkan portofolio energi terbarukan menuju Indonesia Net Zero 2060.",               "color": "from-brand-green-mid to-brand-green-light" },
-      { "icon": "ShieldCheck", "title": "Tata Kelola Unggul",    "desc": "Menjalankan bisnis dengan standar GCG tertinggi, transparansi penuh, dan integritas sebagai fondasi kepercayaan publik.",          "color": "from-emerald-600 to-teal-500" },
-      { "icon": "Users",       "title": "Dampak Sosial",         "desc": "Program CSR & TJSL yang menyentuh ribuan komunitas — dari pemberdayaan UMKM hingga pendidikan dan kesehatan masyarakat.",           "color": "from-teal-600 to-brand-green-light" }
+      { "icon": "Users",         "title": "Ketahanan Energi",      "desc": "Memastikan ketersediaan energi yang andal dan terjangkau untuk seluruh masyarakat Indonesia dari Sabang sampai Merauke."},
+      { "icon": "Leaf",        "title": "Energi Berkelanjutan",  "desc": "Berkomitmen mengurangi emisi karbon dan mengembangkan portofolio energi terbarukan menuju Indonesia Net Zero 2060."},
+      { "icon": "ShieldCheck", "title": "Tata Kelola Unggul",    "desc": "Menjalankan bisnis dengan standar GCG tertinggi, transparansi penuh, dan integritas sebagai fondasi kepercayaan publik."},
+      { "icon": "Users",       "title": "Dampak Sosial",         "desc": "Program CSR & TJSL yang menyentuh ribuan komunitas — dari pemberdayaan UMKM hingga pendidikan dan kesehatan masyarakat."}
     ]
   },
   "timeline": {
     "chip": "Perjalanan Kami",
     "title": "Sejarah & Pencapaian",
-    "defaultYear": "2025",
+    "defaultYear": "2026",
     "milestones": [
-      { "year": "2015", "event": "Restrukturisasi holding dan pembentukan subholding untuk efisiensi operasional." },
-      { "year": "2018", "event": "Restrukturisasi holding dan pembentukan subholding untuk efisiensi operasional." },
-      { "year": "2022", "event": "Masuk daftar Fortune Global 500 dan memperkuat komitmen energi terbarukan." },
-      { "year": "2025", "event": "Akselerasi transisi energi — target 23% portofolio dari renewable energy." }
+      { "year": "2023", "event": "Pendirian PT BOBA — PT Bikin Orang Bahagia resmi didirikan dengan visi industri tekstil, fashion, dan green technology." },
+      { "year": "2024", "event": "Peluncuran Brand tsoecha.co & sokyuut — Dua brand fashion utama PT BOBA resmi diluncurkan ke pasar nasional." },
+      { "year": "2026", "event": "Ekspansi Marketplace Digital — PT BOBA meluncurkan marketplace digital terintegrasi untuk produk fashion dan layanan green technology." },
+      { "year": "2027", "event": "Visi Pertumbuhan Internasional — Rencana ekspansi ke pasar Asia Tenggara dan kerja sama investor strategis nasional/internasional." }
     ]
   },
   "cta": {

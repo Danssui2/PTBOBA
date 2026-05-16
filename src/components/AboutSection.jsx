@@ -133,7 +133,7 @@ export default function AboutSection() {
             <h3 className="font-display font-extrabold text-brand-green-deep text-3xl sm:text-4xl md:text-5xl">{visiMisi.title}</h3>
           </div>
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-            <div className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-brand-green-pale hover:shadow-[0_8px_40px_rgba(27,168,130,0.12)] transition-all duration-300">
+            <div className="bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-brand-green-pale hover:shadow-xl transition-all duration-300">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-brand-green flex items-center justify-center">
                   <Globe size={22} className="text-white" />
@@ -180,14 +180,14 @@ export default function AboutSection() {
               const Icon = ICON_MAP[p.icon]
               return (
                 <div key={p.title}
-                  className={`group relative bg-white rounded-2xl p-7 border border-gray-100 hover:border-transparent hover:shadow-[0_16px_56px_rgba(27,168,130,0.15)] transition-all duration-300 cursor-default ${pillarsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                  className={`group relative bg-white rounded-2xl p-7 border border-gray-100 hover:border-transparent shadow-[0_16px_56px_rgba(27,168,130,0.15)] hover:shadow-[0_32px_80px_rgba(27,168,130,0.30)] transition-all duration-300 cursor-default ${pillarsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                   style={{ transitionDelay: `${i * 100}ms`, transitionDuration: '600ms' }}>
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${p.color} flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-brand-green to-brand-green-mid flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300`}>
                     <Icon size={22} className="text-white" />
                   </div>
                   <h4 className="font-display font-bold text-brand-green-deep text-lg mb-3">{p.title}</h4>
                   <p className="text-brand-gray-mid text-sm leading-relaxed">{p.desc}</p>
-                  <div className={`absolute bottom-0 left-0 right-0 h-[3px] rounded-b-2xl bg-gradient-to-r ${p.color} scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
+                  <div className={`absolute bottom-0 left-0 right-0 h-[3px] rounded-b-2xl bg-gradient-to-r from-brand-green to-brand-green-mid scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
                 </div>
               )
             })}
@@ -228,7 +228,7 @@ export default function AboutSection() {
           ))}
 
           <div className="relative mt-16 overflow-x-auto scrollbar-hide -mx-6 px-6 sm:-mx-10 sm:px-10 lg:mx-0 lg:px-0 pb-4">
-            <div className="flex items-center w-max mx-auto lg:w-auto lg:justify-center">
+            <div className="flex items-center w-max mx-auto lg:w-auto pt-6 lg:justify-center">
               {timeline.milestones.map((m, i) => (
                 <div key={m.year} className="flex items-center">
                   <button onClick={() => setActiveYear(m.year)} className="flex flex-col items-center gap-2 group transition-all duration-300 focus:outline-none">

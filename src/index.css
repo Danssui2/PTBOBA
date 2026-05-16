@@ -78,7 +78,7 @@
     @apply w-full inline-flex items-center justify-center gap-2
            text-brand-green-deep font-semibold text-sm
            px-4 py-3 rounded-xl border border-gray-200
-           hover:border-brand-green hover:text-brand-green hover:bg-brand-green-pale
+           hover:border-brand-green-mid hover:text-white hover:bg-brand-green-mid
            transition-all duration-300 active:scale-[0.98];
   }
 
