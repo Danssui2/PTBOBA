@@ -1,0 +1,60 @@
+{
+  "header": {
+    "chip": "Green Technology",
+    "title": "Green Services PT BOBA",
+    "subtitle": "Layanan green technology PT BOBA — pengelolaan sampah & konversi sampah organik menjadi bahan bakar kendaraan, dipasarkan via",
+    "subtitleBold": "Ponpin",
+    "subtitleEnd": " marketplace."
+  },
+  "footer": {
+    "note": "Butuh solusi kustom? Kami siap merancang paket layanan khusus untuk kebutuhan Anda.",
+    "ctaLabel": "Konsultasi Gratis",
+    "ctaHref": "#contact"
+  },
+  "services": [
+    {
+      "id": 1,
+      "icon": "Truck",
+      "title": "Pengambilan Sampah Rumah Tangga",
+      "tag": "Pengambilan Sampah",
+      "desc": "Layanan jemput sampah rumah tangga rutin sesuai jadwal yang Anda pilih.",
+      "price": "Rp 75.000",
+      "unit": "/ bulan",
+      "cta": "Pesan Layanan",
+      "ctaHref": "#contact"
+    },
+    {
+      "id": 2,
+      "icon": "Factory",
+      "title": "Pengelolaan Sampah Korporat",
+      "tag": "Pengelolaan Sampah",
+      "desc": "Pengelolaan sampah lengkap untuk perusahaan, perkantoran, dan kawasan industri.",
+      "price": "Rp 1.500.000",
+      "unit": "/ bulan",
+      "cta": "Pesan Layanan",
+      "ctaHref": "#contact"
+    },
+    {
+      "id": 3,
+      "icon": "Leaf",
+      "title": "Pengolahan Sampah Organik",
+      "tag": "Pengolahan Organik",
+      "desc": "Pengolahan sampah organik menjadi kompos dan pupuk berkualitas.",
+      "price": "Rp 250.000",
+      "unit": "/ ton",
+      "cta": "Pesan Layanan",
+      "ctaHref": "#contact"
+    },
+    {
+      "id": 4,
+      "icon": "Flame",
+      "title": "Konversi Sampah Organik ke Bahan Bakar",
+      "tag": "Bahan Bakar Hijau",
+      "desc": "Konversi sampah organik menjadi bahan bakar kendaraan ramah lingkungan.",
+      "price": "Rp 5.000.000",
+      "unit": "/ project",
+      "cta": "Pesan Layanan",
+      "ctaHref": "#contact"
+    }
+  ]
+}

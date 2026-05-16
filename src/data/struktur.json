@@ -1,0 +1,58 @@
+{
+  "founders": {
+    "chip": "Struktur Perusahaan",
+    "title": "Pendiri PT BOBA",
+    "subtitle": "Tim profesional yang menggerakkan PT Bikin Orang Bahagia.",
+    "members": [
+      {
+        "name": "Bachrul Ullum Assrori",
+        "role": "Chief Executive Officer",
+        "desc": "Bertanggung jawab atas pengambilan keputusan utama, arah bisnis perusahaan, pengembangan brand, kerja sama, serta pengawasan operasional PT BOBA."
+      },
+      {
+        "name": "Ario Putra Bakti",
+        "role": "Chief Operating Officer",
+        "desc": "Bertanggung jawab dalam pengawasan utama terhadap kebijakan perusahaan, memberikan arahan strategis, serta memastikan perusahaan berjalan sesuai tujuan perusahaan."
+      },
+      {
+        "name": "Ellen Sinta Budirahayu",
+        "role": "Chief Business Officer",
+        "desc": "Bertanggung jawab membantu pengawasan perusahaan, memberikan masukan terhadap pengembangan bisnis, dan mendukung keberlanjutan perusahaan."
+      }
+    ]
+  },
+  "ecosystem": {
+    "chip": "Business Ecosystem",
+    "title": "Ekosistem Bisnis PT BOBA",
+    "items": [
+      { "icon": "Building2",   "name": "Holding",     "sub": "PT Bikin Orang Bahagia",      "desc": null },
+      { "icon": "ShoppingBag", "name": "tsoecha.co",  "sub": "Fashion Pria",                 "desc": "Tekstil & Produk Olahan" },
+      { "icon": "ShoppingBag", "name": "sokyuut",     "sub": "Fashion Wanita",               "desc": "Tekstil & Aksesoris" },
+      { "icon": "Store",       "name": "Ponpin",      "sub": "ASEAN Marketplace Platform",   "desc": "tempat brand & layanan PT BOBA dijual" }
+    ]
+  },
+  "investment": {
+    "badge": "Investment Opportunity",
+    "title": "Peluang Investasi PT BOBA",
+    "desc": "PT BOBA membuka peluang kerja sama strategis bagi investor nasional dan internasional. Dengan ekosistem fashion + green technology yang terintegrasi, PT BOBA memiliki potensi pertumbuhan tinggi di pasar lokal maupun ekspor.",
+    "points": [
+      "Diversifikasi pendapatan: fashion + jasa lingkungan.",
+      "Komitmen ESG & ekonomi sirkular via Green Services PT BOBA.",
+      "Skalabilitas tinggi melalui marketplace digital.",
+      "Tim pendiri berpengalaman lintas sektor."
+    ],
+    "card": {
+      "title": "Tertarik Berinvestasi?",
+      "desc": "Akses Investor Relations untuk profil lengkap, pitch deck, dan jadwal pertemuan.",
+      "stats": [
+        { "v": "3",    "l": "Entitas Bisnis" },
+        { "v": "2026", "l": "Tahun Berdiri" },
+        { "v": "ASEAN","l": "Target Pasar" }
+      ],
+      "ctaLabel": "Buka Investor Relations",
+      "ctaHref": "/investor-relations",
+      "secondaryLabel": "Hubungi Tim Kami",
+      "secondaryHref": "#contact"
+    }
+  }
+}

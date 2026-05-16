@@ -1,0 +1,68 @@
+{
+  "brand": {
+    "tagline": "Perusahaan holding yang membangun ekosistem fashion dan green technology untuk membahagiakan setiap langkah kehidupan masyarakat Indonesia.",
+    "address": "Jl. Mayjend. Jonosewojo No.Kav.3, Surabaya",
+    "phone": "+62 21 5555 8888",
+    "email": "hello@ptboba.id"
+  },
+  "topBrands": [
+    { "name": "tsoecha.co", "bg": "#f5f5f5", "text": "#333",     "href": "#brands" },
+    { "name": "sokyuut",    "bg": "#fce4ec", "text": "#c2185b",  "href": "#brands" },
+    { "name": "Ponpin",     "bg": "#1BA882", "text": "#fff",     "href": "#brands" }
+  ],
+  "socials": [
+    { "icon": "Instagram", "href": "https://instagram.com/ptboba",           "label": "Instagram" },
+    { "icon": "Twitter",   "href": "https://twitter.com/ptboba",             "label": "Twitter/X" },
+    { "icon": "Linkedin",  "href": "https://linkedin.com/company/ptboba",   "label": "LinkedIn" },
+    { "icon": "Youtube",   "href": "https://youtube.com/@ptboba",           "label": "YouTube" }
+  ],
+  "navGroups": [
+    {
+      "title": "Perusahaan",
+      "links": [
+        { "label": "Tentang Kami",        "href": "#about" },
+        { "label": "Struktur Perusahaan", "href": "#struktur" },
+        { "label": "Visi & Misi",         "href": "#about" },
+        { "label": "Ekosistem Bisnis",    "href": "#struktur" },
+        { "label": "Investor Relations",  "href": "/investor-relations" }
+      ]
+    },
+    {
+      "title": "Brand & Produk",
+      "links": [
+        { "label": "tsoecha.co",    "href": "#brands",   "badge": "Fashion Pria" },
+        { "label": "sokyuut",      "href": "#brands",   "badge": "Fashion Wanita" },
+        { "label": "Ponpin",       "href": "#brands",   "badge": "Marketplace" },
+        { "label": "Semua Produk", "href": "#products" },
+        { "label": "Green Services","href": "#services" }
+      ]
+    },
+    {
+      "title": "Layanan",
+      "links": [
+        { "label": "Pengambilan Sampah",   "href": "#services" },
+        { "label": "Pengelolaan Korporat", "href": "#services" },
+        { "label": "Pengolahan Organik",   "href": "#services" },
+        { "label": "Konversi Bahan Bakar", "href": "#services" },
+        { "label": "Konsultasi Gratis",    "href": "#contact" }
+      ]
+    },
+    {
+      "title": "Kemitraan",
+      "links": [
+        { "label": "Mitra Distribusi",  "href": "#partner" },
+        { "label": "Mitra Teknologi",   "href": "#partner" },
+        { "label": "Mitra Lingkungan",  "href": "#partner" },
+        { "label": "Hubungi Kami",      "href": "#contact" }
+      ]
+    }
+  ],
+  "newsletter": {
+    "title": "Dapatkan Update Terbaru PT BOBA",
+    "subtitle": "Berita, produk baru, dan penawaran eksklusif langsung ke inbox Anda.",
+    "placeholder": "Email Anda...",
+    "ctaLabel": "Subscribe"
+  },
+  "bottomLinks": ["Kebijakan Privasi", "Syarat & Ketentuan", "Sitemap"],
+  "copyright": "PT Bikin Orang Bahagia. Seluruh hak cipta dilindungi."
+}

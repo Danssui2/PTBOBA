@@ -1,0 +1,125 @@
+{
+  "header": {
+    "chip": "Portfolio Produk",
+    "title": "Produk yang",
+    "titleHighlight": "Membahagiakan",
+    "titleEnd": "Jutaan Orang",
+    "desc": "Dari minuman segar hingga teknologi finansial — setiap brand PT BOBA dirancang untuk menghadirkan kebahagiaan nyata dalam kehidupan sehari-hari.",
+    "ctaLabel": "Lihat semua produk",
+    "ctaHref": "#products"
+  },
+  "categories": ["Semua", "Makanan & Minuman", "Lifestyle", "Teknologi", "Kesehatan", "Sustainability"],
+  "marqueeItems": [
+    "BOBA Fresh", "BOBA Energy", "BOBA Life", "BOBA Tech",
+    "BOBA Care", "BOBA Green", "BOBA Mart", "BOBA Finance",
+    "BOBA Fresh", "BOBA Energy", "BOBA Life", "BOBA Tech",
+    "BOBA Care", "BOBA Green", "BOBA Mart", "BOBA Finance"
+  ],
+  "cta": {
+    "eyebrow": "Bergabung Bersama Kami",
+    "title": "Ingin Membawa Brand Anda ke Level Berikutnya?",
+    "desc": "PT BOBA membuka kesempatan kemitraan brand, lisensi, dan co-branding untuk pelaku usaha yang ingin tumbuh bersama ekosistem kami.",
+    "buttons": [
+      { "label": "Hubungi Kami", "href": "#contact", "variant": "white" },
+      { "label": "Lihat Mitra",  "href": "#partner", "variant": "ghost" }
+    ]
+  },
+  "brands": [
+    {
+      "id": 1,
+      "name": "BOBA Fresh",
+      "category": "Makanan & Minuman",
+      "tagline": "Segar di Setiap Tegukan",
+      "desc": "Lini minuman segar premium yang menghadirkan cita rasa nusantara dengan sentuhan modern. Tersedia di 500+ gerai seluruh Indonesia.",
+      "featured": true,
+      "color": "#1BA882",
+      "initials": "BF",
+      "stats": [{ "v": "500+", "l": "Gerai" }, { "v": "2Jt+", "l": "Pelanggan" }, { "v": "4.8★", "l": "Rating" }],
+      "img": "https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "id": 2,
+      "name": "BOBA Energy",
+      "category": "Makanan & Minuman",
+      "tagline": "Power Your Day",
+      "desc": "Minuman energi berkualitas tinggi dengan formula khusus dari bahan-bahan alami pilihan untuk mendukung aktivitas harian Anda.",
+      "featured": false,
+      "color": "#148F6D",
+      "initials": "BE",
+      "stats": [{ "v": "12", "l": "Varian" }, { "v": "50K+", "l": "Penjualan/hari" }, { "v": "No.1", "l": "Market Share" }],
+      "img": "https://images.pexels.com/photos/1188649/pexels-photo-1188649.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "id": 3,
+      "name": "BOBA Life",
+      "category": "Lifestyle",
+      "tagline": "Live the Good Life",
+      "desc": "Produk lifestyle premium mencakup apparel, aksesori, dan home décor yang menggabungkan estetika kontemporer dengan kenyamanan optimal.",
+      "featured": false,
+      "color": "#21C49A",
+      "initials": "BL",
+      "stats": [{ "v": "200+", "l": "Produk" }, { "v": "80+", "l": "Kota" }, { "v": "4.7★", "l": "Rating" }],
+      "img": "https://images.pexels.com/photos/5632399/pexels-photo-5632399.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "id": 4,
+      "name": "BOBA Tech",
+      "category": "Teknologi",
+      "tagline": "Smart Solutions for Everyone",
+      "desc": "Solusi teknologi inovatif dari perangkat IoT hingga platform digital yang memudahkan kehidupan dan bisnis masyarakat Indonesia.",
+      "featured": false,
+      "color": "#0D5040",
+      "initials": "BT",
+      "stats": [{ "v": "50+", "l": "Produk Tech" }, { "v": "1Jt+", "l": "Pengguna Aktif" }, { "v": "99%", "l": "Uptime" }],
+      "img": "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "id": 5,
+      "name": "BOBA Care",
+      "category": "Kesehatan",
+      "tagline": "Caring for You, Every Day",
+      "desc": "Rangkaian produk kesehatan dan perawatan diri yang diformulasikan secara klinis dengan bahan-bahan alami terpilih untuk keluarga Indonesia.",
+      "featured": false,
+      "color": "#2DD4B0",
+      "initials": "BC",
+      "stats": [{ "v": "80+", "l": "SKU Produk" }, { "v": "BPOM", "l": "Certified" }, { "v": "4.9★", "l": "Rating" }],
+      "img": "https://images.pexels.com/photos/3735747/pexels-photo-3735747.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "id": 6,
+      "name": "BOBA Green",
+      "category": "Sustainability",
+      "tagline": "Good for You, Good for Earth",
+      "desc": "Brand ramah lingkungan dengan produk-produk berbahan daur ulang dan proses produksi yang berkomitmen pada net-zero carbon emission.",
+      "featured": false,
+      "color": "#1BA882",
+      "initials": "BG",
+      "stats": [{ "v": "100%", "l": "Eco Material" }, { "v": "0", "l": "Carbon Waste" }, { "v": "30+", "l": "Produk Hijau" }],
+      "img": "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "id": 7,
+      "name": "BOBA Mart",
+      "category": "Lifestyle",
+      "tagline": "Belanja Mudah, Harga Bahagia",
+      "desc": "Jaringan minimarket modern yang menghadirkan produk BOBA Group dan kebutuhan sehari-hari dengan harga terjangkau di lokasi strategis.",
+      "featured": false,
+      "color": "#148F6D",
+      "initials": "BM",
+      "stats": [{ "v": "300+", "l": "Gerai" }, { "v": "24/7", "l": "Operasional" }, { "v": "10K+", "l": "SKU" }],
+      "img": "https://images.pexels.com/photos/1005638/pexels-photo-1005638.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "id": 8,
+      "name": "BOBA Finance",
+      "category": "Teknologi",
+      "tagline": "Finansial untuk Semua",
+      "desc": "Platform keuangan digital yang menyederhanakan akses ke layanan perbankan, investasi, dan asuransi bagi seluruh lapisan masyarakat.",
+      "featured": false,
+      "color": "#21C49A",
+      "initials": "BFi",
+      "stats": [{ "v": "500K+", "l": "Pengguna" }, { "v": "OJK", "l": "Licensed" }, { "v": "0%", "l": "Admin Fee" }],
+      "img": "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800"
+    }
+  ]
+}
