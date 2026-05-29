@@ -54,7 +54,7 @@ export default function AdminLayout() {
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <a href="http://localhost:5173" target="_blank" rel="noreferrer"
+          <a href="/" target="_blank" rel="noreferrer"
             style={{ padding: '7px 14px', borderRadius: 8, background: '#f3f4f6', color: '#374151', textDecoration: 'none', fontSize: 13, fontWeight: 600 }}>
             🔗 Website
           </a>
