@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Homepage (ID) -->
+  <url>
+    <loc>https://ptboba.com/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://ptboba.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ptboba.com/"/>
+  </url>
+
+  <!-- Investor Relations -->
+  <url>
+    <loc>https://ptboba.com/investor-relations</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://ptboba.com/investor-relations"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ptboba.com/investor-relations"/>
+  </url>
+
+</urlset>

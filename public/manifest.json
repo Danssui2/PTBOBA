@@ -1,0 +1,14 @@
+{
+  "name": "PT Bikin Orang Bahagia",
+  "short_name": "PT BOBA",
+  "description": "Perdagangan komoditas alam unggulan Indonesia untuk pasar domestik dan ekspor internasional.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1BA882",
+  "lang": "id",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" },
+    { "src": "/logo.png",    "sizes": "192x192", "type": "image/png" }
+  ]
+}
