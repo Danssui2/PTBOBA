@@ -45,7 +45,8 @@ export default function AdminLayout() {
           <button onClick={() => setSidebarOpen(x => !x)}
             style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 18, padding: '4px 8px', color: '#6b7280', borderRadius: 8 }}>☰</button>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{ width: 34, height: 34, borderRadius: 9, background: 'linear-gradient(135deg, #1BA882, #0D5040)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 13 }}>PT</div>
+            <img src="/logo.png" alt="Logo PT BOBA" class="h-10 w-10 object-contain rounded-xl"></img>
+            {/* <div style={{ width: 34, height: 34, borderRadius: 9, background: 'linear-gradient(135deg, #1BA882, #0D5040)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 13 }}>PT</div> */}
             <div>
               <p style={{ margin: 0, fontWeight: 800, fontSize: 15, color: '#111', lineHeight: 1.2 }}>PT BOBA</p>
               <p style={{ margin: 0, fontSize: 10, color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Admin Panel · {SECTIONS.length} Sections</p>

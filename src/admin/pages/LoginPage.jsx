@@ -36,8 +36,8 @@ export default function LoginPage() {
       <div style={{ width: '100%', maxWidth: 420, position: 'relative' }}>
         {/* Logo */}
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
-          <div style={{ width: 64, height: 64, borderRadius: 18, background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', border: '1px solid rgba(255,255,255,0.25)' }}>
-            <span style={{ fontSize: 24, fontWeight: 900, color: '#fff' }}>PT</span>
+          <div style={{ width: 64, height: 64, borderRadius: 18, background: 'rgba(255,255,255,50)', backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', border: '1px solid rgba(255,255,255,0.25)' }}>
+            <img src="/logo.png" alt="Logo PT BOBA" class="h-10 w-10 object-contain rounded-xl"/>
           </div>
           <h1 style={{ margin: 0, fontSize: 24, fontWeight: 800, color: '#fff', letterSpacing: '-0.5px' }}>PT BOBA Admin</h1>
           <p style={{ margin: '6px 0 0', fontSize: 14, color: 'rgba(255,255,255,0.7)' }}>Content Management System</p>
