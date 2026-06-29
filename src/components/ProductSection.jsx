@@ -1,7 +1,8 @@
 import { useContent } from '../hooks/useContent'
 import { useLocalizedData } from '../hooks/useLang'
 import { useState, useEffect, useRef } from 'react'
-import { ArrowRight, ExternalLink, Star, X, Mail, MessageCircle } from 'lucide-react'
+import { ArrowRight, Star, X, Mail, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react'
+import { cldThumb, cldCard, cldModal, cldFeatured } from '../admin/utils/cloudinaryUrl'
 
 /* ─────────────────────────────────────────────────────────────── */
 /* Helpers                                                         */
@@ -35,6 +36,10 @@ const BrandLogo = ({ brand, size = 'md' }) => {
   )
 }
 
+// Foto cover (foto pertama) — dipakai di card grid & featured carousel.
+// Galeri penuh (semua foto) hanya muncul di ProductModal saat card diklik.
+const getCover = (brand) => brand.images?.[0] || brand.img || ''
+
 /* ─────────────────────────────────────────────────────────────── */
 /* Product Modal                                                   */
 /* ─────────────────────────────────────────────────────────────── */
@@ -64,11 +69,22 @@ function buildMailtoLink(brand, email) {
 }
 
 function ProductModal({ brand, waNumber, contactEmail, onClose }) {
+  const images = brand.images?.length ? brand.images : (brand.img ? [brand.img] : [])
+  const hasMultiple = images.length > 1
+  const [imgIdx, setImgIdx] = useState(0)
+
+  const prevImg = () => setImgIdx(i => (i - 1 + images.length) % images.length)
+  const nextImg = () => setImgIdx(i => (i + 1) % images.length)
+
   useEffect(() => {
-    const h = (e) => { if (e.key === 'Escape') onClose() }
+    const h = (e) => {
+      if (e.key === 'Escape') onClose()
+      if (hasMultiple && e.key === 'ArrowLeft')  prevImg()
+      if (hasMultiple && e.key === 'ArrowRight') nextImg()
+    }
     window.addEventListener('keydown', h)
     return () => window.removeEventListener('keydown', h)
-  }, [onClose])
+  }, [onClose, hasMultiple])
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
@@ -93,9 +109,31 @@ function ProductModal({ brand, waNumber, contactEmail, onClose }) {
           <X size={15} className="text-gray-500" />
         </button>
 
-        <div className="relative h-48 overflow-hidden">
-          <img src={brand.img} alt={brand.name} className="w-full h-full object-cover" />
+        <div className="relative h-72 sm:h-80 overflow-hidden">
+          <img src={cldModal(images[imgIdx])} alt={`${brand.name} ${imgIdx + 1}`}
+            className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+          {hasMultiple && (
+            <>
+              <button onClick={(e) => { e.stopPropagation(); prevImg() }}
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/30 hover:bg-black/55 backdrop-blur-sm flex items-center justify-center text-white transition-colors">
+                <ChevronLeft size={18} />
+              </button>
+              <button onClick={(e) => { e.stopPropagation(); nextImg() }}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/30 hover:bg-black/55 backdrop-blur-sm flex items-center justify-center text-white transition-colors">
+                <ChevronRight size={18} />
+              </button>
+
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+                {images.map((_, i) => (
+                  <button key={i} onClick={(e) => { e.stopPropagation(); setImgIdx(i) }}
+                    className={`rounded-full transition-all duration-300 ${i === imgIdx ? 'w-6 h-1.5 bg-white' : 'w-1.5 h-1.5 bg-white/50 hover:bg-white/80'}`} />
+                ))}
+              </div>
+            </>
+          )}
+
           <div className="absolute bottom-4 left-4 flex items-end gap-3">
             <BrandLogo brand={brand} size="md" />
             <div>
@@ -104,6 +142,18 @@ function ProductModal({ brand, waNumber, contactEmail, onClose }) {
             </div>
           </div>
         </div>
+
+        {hasMultiple && (
+          <div className="flex gap-2 px-6 pt-4 overflow-x-auto">
+            {images.map((src, i) => (
+              <button key={i} onClick={() => setImgIdx(i)}
+                className={`shrink-0 w-14 h-14 rounded-xl overflow-hidden border-2 transition-all
+                            ${i === imgIdx ? 'border-brand-green' : 'border-transparent opacity-60 hover:opacity-100'}`}>
+                <img src={cldThumb(src)} alt={`${brand.name} thumbnail ${i + 1}`} className="w-full h-full object-cover" />
+              </button>
+            ))}
+          </div>
+        )}
 
         <div className="px-6 pt-5 pb-6">
           <p className="text-brand-green text-sm font-semibold italic mb-3">{brand.tagline}</p>
@@ -216,12 +266,8 @@ function FeaturedShowcase({ brands, onOpenModal }) {
                 onClick={() => onOpenModal(brand)}
                 className="inline-flex items-center gap-2 bg-brand-green text-white font-bold px-6 py-3 rounded-xl
                            hover:bg-brand-green-dark transition-all duration-300 hover:shadow-[0_4px_20px_rgba(27,168,130,0.4)]">
-                Jelajahi Brand <ArrowRight size={16} />
+                Lihat Produk <ArrowRight size={16} />
               </button>
-              <a href={brand.website} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white/60 hover:text-white font-semibold text-sm transition-colors">
-                <ExternalLink size={14} /> Website Resmi
-              </a>
             </div>
           </div>
 
@@ -229,8 +275,8 @@ function FeaturedShowcase({ brands, onOpenModal }) {
           <div key={`img-${brand.id}`} className="relative" style={{ animation: 'fadeSlide .35s ease-out' }}>
             <div className="relative rounded-3xl overflow-hidden shadow-[0_24px_64px_rgba(0,0,0,0.35)] cursor-pointer group"
                  onClick={() => onOpenModal(brand)}>
-              <img src={brand.img} alt={brand.name}
-                className="w-full h-[340px] sm:h-[380px] object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img src={cldFeatured(getCover(brand))} alt={brand.name}
+                className="w-full h-[420px] sm:h-[480px] lg:h-[520px] object-cover transition-transform duration-700 group-hover:scale-105" />
 
               {/* Brand name badge — top right */}
               <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-brand-green-deep font-bold text-sm px-4 py-1.5 rounded-full shadow-sm">
@@ -267,9 +313,12 @@ export default function ProductSection() {
   const { header, categories = [], brands = [], marqueeItems = [], cta, waNumber, contactEmail } = data ?? {}
   const FEATURED = brands.filter(b => b.featured || b.id <= 3)
 
+  const PAGE_SIZE = 16
+
   const [activeCategory, setActiveCategory] = useState(null)   // null = show all
   const [hoveredId,      setHoveredId]      = useState(null)
   const [selectedBrand,  setSelectedBrand]  = useState(null)
+  const [visibleCount,   setVisibleCount]   = useState(PAGE_SIZE)
   const [headerRef, headerInView] = useInView(0.1)
   const [gridRef,   gridInView]   = useInView(0.08)
 
@@ -277,6 +326,12 @@ export default function ProductSection() {
   const filtered = activeCategory
     ? brands.filter(b => b.categoryKey === activeCategory)
     : brands
+
+  // Reset jumlah yang tampil tiap kali filter kategori berubah
+  useEffect(() => { setVisibleCount(PAGE_SIZE) }, [activeCategory])
+
+  const visibleProducts = filtered.slice(0, visibleCount)
+  const hasMore = visibleCount < filtered.length
 
   return (
     <section id="products" className="bg-white overflow-hidden">
@@ -319,13 +374,13 @@ export default function ProductSection() {
               </button>
             ))}
             <span className="ml-2 text-brand-gray-mid text-xs font-medium hidden sm:inline">
-              {filtered.length} brand ditemukan
+              {visibleProducts.length} dari {filtered.length} brand ditampilkan
             </span>
           </div>
 
           {/* Cards */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {filtered.map((brand, i) => (
+            {visibleProducts.map((brand, i) => (
               <div key={brand.id}
                    onClick={() => setSelectedBrand(brand)}
                    onMouseEnter={() => setHoveredId(brand.id)}
@@ -337,8 +392,8 @@ export default function ProductSection() {
                                 hover:-translate-y-1 transition-all duration-300
                                 ${gridInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                    style={{ transitionDelay: `${i * 60}ms`, transitionDuration: '550ms' }}>
-                <div className="relative h-44 overflow-hidden">
-                  <img src={brand.img} alt={brand.name}
+                <div className="relative h-64 sm:h-72 overflow-hidden">
+                  <img src={cldCard(getCover(brand))} alt={brand.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <span className="absolute top-3 left-3 bg-black/40 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
@@ -373,6 +428,21 @@ export default function ProductSection() {
               </div>
             ))}
           </div>
+
+          {/* Load More */}
+          {hasMore && (
+            <div className="flex justify-center mt-10">
+              <button onClick={() => setVisibleCount(c => c + PAGE_SIZE)}
+                className="inline-flex items-center gap-2 bg-white text-brand-green-deep font-bold text-sm px-7 py-3.5 rounded-xl
+                           border-2 border-brand-green/20 hover:border-brand-green hover:bg-brand-green-pale
+                           transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(27,168,130,0.15)]">
+                Lihat Lebih Banyak
+                <span className="text-brand-green-light text-xs font-semibold bg-brand-green/10 px-2 py-0.5 rounded-full">
+                  +{Math.min(PAGE_SIZE, filtered.length - visibleCount)}
+                </span>
+              </button>
+            </div>
+          )}
         </div>
       </div>
 

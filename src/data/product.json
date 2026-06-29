@@ -30,36 +30,67 @@
   },
   "categories": [
     {
-      "id": "Semua",
-      "en": "All"
+      "key": "all",
+      "label": {
+        "id": "Semua",
+        "en": "All"
+      }
     },
     {
-      "id": "Buah & Produk Segar",
-      "en": "Fruit & Fresh Produce"
+      "key": "fruit",
+      "label": {
+        "id": "Buah & Produk Segar",
+        "en": "Fruit & Fresh Produce"
+      }
     },
     {
-      "id": "Kopi & Rempah",
-      "en": "Coffee & Spices"
+      "key": "coffee-spice",
+      "label": {
+        "id": "Kopi & Rempah",
+        "en": "Coffee & Spices"
+      }
     },
     {
-      "id": "Herbal & Empon",
-      "en": "Herbs & Rhizomes"
+      "key": "herbal-rhizome",
+      "label": {
+        "id": "Herbal & Empon",
+        "en": "Herbs & Rhizomes"
+      }
     },
     {
-      "id": "Daun & Herba",
-      "en": "Leaves & Herbs"
+      "key": "leaf-herb",
+      "label": {
+        "id": "Daun & Herba",
+        "en": "Leaves & Herbs"
+      }
     },
     {
-      "id": "Bubuk & Biji",
-      "en": "Powder & Seeds"
+      "key": "powder-seed",
+      "label": {
+        "id": "Bubuk & Biji",
+        "en": "Powder & Seeds"
+      }
     },
     {
-      "id": "Kacang & Buah Kering",
-      "en": "Nuts & Dried Fruit"
+      "key": "nuts-dried-fruit",
+      "label": {
+        "id": "Kacang & Buah Kering",
+        "en": "Nuts & Dried Fruit"
+      }
     },
     {
-      "id": "Kayu & Material",
-      "en": "Wood & Materials"
+      "key": "wood-material",
+      "label": {
+        "id": "Kayu & Material",
+        "en": "Wood & Materials"
+      }
+    },
+    {
+      "key": "processed-food",
+      "label": {
+        "id": "Produk Olahan & Pangan",
+        "en": "Processed Food Products"
+      }
     }
   ],
   "marqueeItems": [
@@ -179,7 +210,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://images.pexels.com/photos/31757891/pexels-photo-31757891.jpeg"
+      ],
+      "categoryKey": "fruit"
     },
     {
       "id": 2,
@@ -223,7 +258,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": 3,
@@ -267,7 +306,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://images.pexels.com/photos/4963318/pexels-photo-4963318.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": 4,
@@ -304,7 +347,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://images.pexels.com/photos/18495829/pexels-photo-18495829.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": 5,
@@ -341,7 +388,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://images.pexels.com/photos/20737581/pexels-photo-20737581.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": 6,
@@ -385,7 +436,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://cdn.pixabay.com/photo/2019/02/04/02/19/bean-3973842_1280.jpg"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": 7,
@@ -429,7 +484,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://cdn.pixabay.com/photo/2019/01/05/11/23/peppercorns-3914937_1280.jpg"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": 8,
@@ -473,7 +532,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//91/MTA-36233009/oem_biji-pala-lonjong-panjang-100gram-100-gram_full02.jpg"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": 9,
@@ -510,7 +573,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://www.asterra.id/wp-content/uploads/2024/02/buah-pala-scaled.jpg"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": 10,
@@ -547,7 +614,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://infopublik.id/resources/album/pertanian-perikanan-perkebunan-peternakan/DSC_3560_compressed.JPG"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": 11,
@@ -584,7 +655,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://images.pexels.com/photos/6176581/pexels-photo-6176581.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": 12,
@@ -621,7 +696,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://cdn.pixabay.com/photo/2022/06/25/12/40/herbs-7283387_1280.jpg"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": 13,
@@ -658,7 +737,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://sadabhumi.com/_next/image?url=https%3A%2F%2Fsadabhumi-cdn.sgp1.digitaloceanspaces.com%2Fcms%2F10a58687fa93b1a93bcff94e28f07aca.jpg&w=3840&q=75"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": 14,
@@ -702,7 +785,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://images.pexels.com/photos/31346461/pexels-photo-31346461.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
+      "categoryKey": "herbal-rhizome"
     },
     {
       "id": 15,
@@ -739,7 +826,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://delimaasihsismamedika.com/wp-content/uploads/2019/04/manfaat-temulawak-untuk-kesehatan.png"
+      ],
+      "categoryKey": "herbal-rhizome"
     },
     {
       "id": 16,
@@ -776,7 +867,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://images.alodokter.com/dk0z4ums3/image/upload/v1777523227/attached_image/lengkuas.jpg"
+      ],
+      "categoryKey": "herbal-rhizome"
     },
     {
       "id": 17,
@@ -820,7 +915,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://bibitbunga.com/wp-content/uploads/2018/03/Umbi-jahe-gajah.jpg"
+      ],
+      "categoryKey": "herbal-rhizome"
     },
     {
       "id": 18,
@@ -857,7 +956,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2022/03/14014126/X-Manfaat-Jahe-Merah-untuk-Kesehatan-yang-Perlu-Diketahui-01.jpg.webp"
+      ],
+      "categoryKey": "herbal-rhizome"
     },
     {
       "id": 19,
@@ -894,7 +997,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://images.alodokter.com/dk0z4ums3/image/upload/v1764241841/attached_image/jahe-emprit-si-rempah-mini-yang-pedas-dan-kaya-khasiat.jpg"
+      ],
+      "categoryKey": "herbal-rhizome"
     },
     {
       "id": 20,
@@ -931,7 +1038,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://down-id.img.susercontent.com/file/ab5c896fbd4bef9cbf8ebe7523c1e272"
+      ],
+      "categoryKey": "herbal-rhizome"
     },
     {
       "id": 21,
@@ -968,7 +1079,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://id-test-11.slatic.net/p/mdc/aa6f5d1820be9cb726b53fadba8ecfa4.jpg"
+      ],
+      "categoryKey": "herbal-rhizome"
     },
     {
       "id": 22,
@@ -1005,7 +1120,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://down-id.img.susercontent.com/file/d1f1fb42a481d9518247b0cc2ef21665"
+      ],
+      "categoryKey": "herbal-rhizome"
     },
     {
       "id": 23,
@@ -1042,7 +1161,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2025/07/07025501/daun-kunyit.jpg.webp"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 24,
@@ -1079,7 +1202,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://inaturalist-open-data.s3.amazonaws.com/photos/1538283/original.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 25,
@@ -1116,7 +1243,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://cdn.britannica.com/16/211716-050-E4CA4AC2/Leaves-patchouli-plant-Pogostemon-cablin.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 26,
@@ -1153,7 +1284,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2021/10/05094444/X-Manfaat-Daun-Kelor-untuk-Kesehatan-yang-Jarang-Diketahui-headline-list-manfaat-dan-penjelasan-CTA.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 27,
@@ -1190,7 +1325,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://images.alodokter.com/dk0z4ums3/image/upload/v1717771936/attached_image/7-manfaat-daun-kelor-untuk-wanita-yang-jarang-diketahui.jpg"
+      ],
+      "categoryKey": "powder-seed"
     },
     {
       "id": 28,
@@ -1227,7 +1366,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://chinapeanutmachinery.com/wp-content/uploads/2023/05/2023051707474457.jpg"
+      ],
+      "categoryKey": "powder-seed"
     },
     {
       "id": 29,
@@ -1264,7 +1407,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://shop.thatsthespirit.nu/cdn/shop/files/Peeled-Moringa-Seeds-100-grams.png?v=1759582131"
+      ],
+      "categoryKey": "powder-seed"
     },
     {
       "id": 30,
@@ -1301,7 +1448,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2022/12/13040651/Jarang-Diketahui-Ini-X-Manfaat-Bunga-Rosella-untuk-Kesehatan.jpg.webp"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 31,
@@ -1338,7 +1489,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://image.made-in-china.com/202f0j00QofbLznWbhcy/Lemongrass-Dried-Cut-Stalks-Wholesale-Loose-Herb-Tea-Food-Aroma-Spices.webp"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 32,
@@ -1375,7 +1530,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://id-test-11.slatic.net/p/94d0cacb55c6d819f6b01d9a2262bddc.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 33,
@@ -1412,7 +1571,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://rumahdukaelim.com/wp-content/uploads/2023/12/manfaat-daun-jambu-biji-1.jpeg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 34,
@@ -1449,7 +1612,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://4.bp.blogspot.com/-h2RCXUIGaj8/Vwck6InIlfI/AAAAAAAAAWM/oPWDsanNHbMHFfgQ_TtkE8g5bOE32RIzw/s1600/pegagan%2B%25281%2529.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 35,
@@ -1486,7 +1653,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://img-cdn.medkomtek.com/1oBKbdBcW2sN-Pfcj8VgLWYj51Q=/0x0/smart/filters:quality(100):format(webp)/article/8vGVdgx5XdKrauJ9NyOfI/original/024131300_1642496942-Daun-Jeruk-2.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 36,
@@ -1523,7 +1694,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://i0.wp.com/rsum.bandaacehkota.go.id/wp-content/uploads/2025/01/bunga-telang.webp?fit=702%2C465&ssl=1"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 37,
@@ -1560,7 +1735,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2022/10/17033623/X-Manfaat-Mahkota-Dewa-dan-Cara-Mengolahnya.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 38,
@@ -1597,7 +1776,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://digitani.ipb.ac.id/wp-content/uploads/2024/11/daun-mint-1024x724.png"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 39,
@@ -1634,7 +1817,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://down-id.img.susercontent.com/file/sg-11134201-22120-8vdtrdvs6rkv8e"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 40,
@@ -1671,7 +1858,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://fk.umsu.ac.id/wp-content/uploads/2023/06/khasiat-daun-salam-bagi-kesehatan-700x375.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 41,
@@ -1708,7 +1899,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://images.alodokter.com/dk0z4ums3/image/upload/v1766042012/attached_image/5-manfaat-biji-mahoni-untuk-wanita-dan-hal-hal-yang-perlu-diperhatikan.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 42,
@@ -1745,7 +1940,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://images.alodokter.com/dk0z4ums3/image/upload/v1691408275/attached_image/5-manfaat-akar-alang-alang-untuk-kesehatan.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 43,
@@ -1782,7 +1981,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//104/MTA-56953408/no-brand_chuan-xin-lian-daun-sambiloto-kering-100-gram_full01.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 44,
@@ -1819,7 +2022,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://id-test-11.slatic.net/p/ea37271ee4ad63c9a9e9c594af6d660a.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 45,
@@ -1856,7 +2063,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/img/VqbcmM/2023/10/27/5e18a28e-d550-4ce1-bd96-64b4287850d8.jpg~tplv-aphluv4xwc-resize-jpeg:700:0.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 46,
@@ -1893,7 +2104,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://cairofood.id/wp-content/uploads/gambar-daun-parsley-bubuk-cairo-food-660x440.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 47,
@@ -1930,7 +2145,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://s.alicdn.com/@sc04/kf/H4f2562198809434f82df839647043e8eU.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 48,
@@ -1967,7 +2186,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://s3-publishing-cmn-svc-prd.s3.ap-southeast-1.amazonaws.com/article/N5gkZfFiV8q36SY9vs0aU/original/041653400_1545043600-Benarkah-Daun-Rosemary-Bisa-Perbaiki-Daya-Ingat-By-Topotishka-Shutterstock.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 49,
@@ -2004,7 +2227,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://ecdn6-nc.globalso.com/upload/p/2392/image_product/2025-03/main-image_compressed.jpg"
+      ],
+      "categoryKey": "leaf-herb"
     },
     {
       "id": 50,
@@ -2041,7 +2268,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/img/VqbcmM/2021/12/11/ce1c4034-e18e-47b1-ba0d-fcd449b869e8.jpg~tplv-aphluv4xwc-resize-jpeg:700:0.jpg"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": 51,
@@ -2078,7 +2309,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2021/11/03054941/Tidak-Sama-Ini-Bedanya-Chia-Seed-dan-Biji-Selasih.jpg.webp"
+      ],
+      "categoryKey": "powder-seed"
     },
     {
       "id": 52,
@@ -2115,7 +2350,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://images.alodokter.com/dk0z4ums3/image/upload/v1631251653/attached_image/mengulik-manfaat-biji-wijen-untuk-kesehatan.jpg"
+      ],
+      "categoryKey": "powder-seed"
     },
     {
       "id": 53,
@@ -2152,7 +2391,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://images.alodokter.com/dk0z4ums3/image/upload/v1606208651/attached_image/manfaat-chia-seed-untuk-ibu-hamil-dan-efek-sampingnya.jpg"
+      ],
+      "categoryKey": "powder-seed"
     },
     {
       "id": 54,
@@ -2189,7 +2432,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://rricoid-assets.obs.ap-southeast-4.myhuaweicloud.com/berita/Batam/o/1750913317001-Screenshot_2025-06-25_214818/gkpqq042959v1h9.jpeg"
+      ],
+      "categoryKey": "powder-seed"
     },
     {
       "id": 55,
@@ -2226,7 +2473,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://cairofood.id/wp-content/uploads/gambar-bawang-bombay-bubuk-cairo-food.jpg"
+      ],
+      "categoryKey": "powder-seed"
     },
     {
       "id": 56,
@@ -2263,7 +2514,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://gaoyingindonesia.com/wp-content/uploads/2025/04/cabai-bubuk-C60-249x300.jpeg"
+      ],
+      "categoryKey": "powder-seed"
     },
     {
       "id": 57,
@@ -2300,7 +2555,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://gaoyingindonesia.com/wp-content/uploads/2025/04/Cabai-Bubuk-Super-Pedas-233x300.jpeg"
+      ],
+      "categoryKey": "powder-seed"
     },
     {
       "id": 58,
@@ -2337,7 +2596,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://image.made-in-china.com/202f0j00DqfikZEasVuC/Smoked-Paprika-Powder-Sweet-Paprika-Pepper-Hot-Spice.webp"
+      ],
+      "categoryKey": "powder-seed"
     },
     {
       "id": 59,
@@ -2374,7 +2637,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://images.bisnis.com/upload/img/kacang_almond.jpg"
+      ],
+      "categoryKey": "nuts-dried-fruit"
     },
     {
       "id": 60,
@@ -2411,7 +2678,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://mandelin.com/cdn/shop/products/Nat-Slice-MVR_800x_d3c915b7-3f49-4aff-8803-a11fca54a356.jpg?v=1623198112&width=2048"
+      ],
+      "categoryKey": "nuts-dried-fruit"
     },
     {
       "id": 61,
@@ -2448,7 +2719,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://mdpiblog.wordpress.sciforum.net/wp-content/uploads/sites/4/2023/01/walnuts.jpg"
+      ],
+      "categoryKey": "nuts-dried-fruit"
     },
     {
       "id": 62,
@@ -2485,7 +2760,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://jagadtani.com/uploads/news/2020/02/menangkap-peluang-pasar-kacang-470036175ef0698.jpg"
+      ],
+      "categoryKey": "nuts-dried-fruit"
     },
     {
       "id": 63,
@@ -2522,7 +2801,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://img.lazcdn.com/g/p/f43e3ea6e456dcad8fafe73b4f75972a.jpg_720x720q80.jpg"
+      ],
+      "categoryKey": "nuts-dried-fruit"
     },
     {
       "id": 64,
@@ -2559,7 +2842,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://img.lazcdn.com/g/p/4ce118d1c4d329acfd211ec04150defc.jpg_720x720q80.jpg"
+      ],
+      "categoryKey": "nuts-dried-fruit"
     },
     {
       "id": 65,
@@ -2596,7 +2883,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDOqwR50V7hqEOrlnZkUrYsHtABrDqkmzXkQ&s"
+      ],
+      "categoryKey": "nuts-dried-fruit"
     },
     {
       "id": 66,
@@ -2633,7 +2924,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://id.underextract.com/uploads/202117112/dried-mango-pieces19025444788.jpg"
+      ],
+      "categoryKey": "nuts-dried-fruit"
     },
     {
       "id": 67,
@@ -2677,7 +2972,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://id-live-01.slatic.net/p/fa48cbb588582c57fec1c0093c954367.jpg"
+      ],
+      "categoryKey": "wood-material"
     },
     {
       "id": {
@@ -2709,7 +3008,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://id.woodveneerfactory.com/uploads/37725/apple-wood-veneer16f52.jpg"
+      ],
+      "categoryKey": "wood-material"
     },
     {
       "id": {
@@ -2741,7 +3044,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://id-live-01.slatic.net/p/412614535d73a232310e29e8e904a27d.jpg"
+      ],
+      "categoryKey": "wood-material"
     },
     {
       "id": {
@@ -2773,7 +3080,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLfHLMLo2Uji9KD26M4YH4vPpSYtZODZQWFQ&s"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": {
@@ -2795,7 +3106,7 @@
       "featured": true,
       "initials": "VGA",
       "color": "#8cff00",
-      "img": "https://thevanillacrown.com/cdn/shop/files/VanillaGradeA_1.png?v=1774441254&width=1200",
+      "img": "https://res.cloudinary.com/dftolrwwi/image/upload/v1782280096/vanilla2_ojeolw.jpg",
       "stats": [
         {
           "v": "A",
@@ -2805,7 +3116,12 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://res.cloudinary.com/dftolrwwi/image/upload/v1782280096/vanilla2_ojeolw.jpg",
+        "https://res.cloudinary.com/dftolrwwi/image/upload/v1782280097/vanilla3_wuif8e.jpg"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": {
@@ -2827,7 +3143,7 @@
       "featured": false,
       "initials": "VGB",
       "color": "#00ff11",
-      "img": "https://inaexport.id/uploads/Eksportir_Product/Image/33352/1741014289__V.Beans.jpeg",
+      "img": "https://res.cloudinary.com/dftolrwwi/image/upload/v1782280096/vanilla_wlcbxt.jpg",
       "stats": [
         {
           "v": "B",
@@ -2837,7 +3153,12 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://res.cloudinary.com/dftolrwwi/image/upload/v1782280096/vanilla_wlcbxt.jpg",
+        "https://res.cloudinary.com/dftolrwwi/image/upload/v1782280097/vanilla3_wuif8e.jpg"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": {
@@ -2869,7 +3190,11 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://www.slofoodgroup.com/cdn/shop/collections/grade-c-vanilla-beans-707250.jpg?v=1779899814"
+      ],
+      "categoryKey": "coffee-spice"
     },
     {
       "id": {
@@ -2901,7 +3226,107 @@
           }
         }
       ],
-      "website": ""
+      "website": "",
+      "images": [
+        "https://image.chemeka.com/s3/productimages/webp/co43213/p607690/w600-h600/92c28769-2994-48e3-bc04-ef592e10c486.jpeg"
+      ],
+      "categoryKey": "coffee-spice"
+    },
+    {
+      "id": 68,
+      "name": "Briket Tempurung Kelapa",
+      "category": {
+        "id": "Kayu & Material",
+        "en": "Wood & Materials"
+      },
+      "tagline": {
+        "id": "Smokeless Cube — Kalori ≥7000 kcal/kg",
+        "en": "Smokeless Cube — Calorific Value ≥7000 kcal/kg"
+      },
+      "desc": {
+        "id": "Briket arang tempurung kelapa kualitas ekspor, dibuat dari batok kelapa pilihan melalui proses karbonisasi tanpa bahan kimia tambahan. Memiliki kadar air rendah (≤8%), kadar abu rendah, dan nilai kalori tinggi (≥7000 kcal/kg) sehingga menghasilkan panas stabil, asap minim, dan tidak berbau. Banyak digunakan untuk shisha/hookah, BBQ, dan kebutuhan industri di pasar Timur Tengah dan Eropa. Tersedia dalam bentuk kubus, silinder, dan heksagonal sesuai permintaan buyer.",
+        "en": "Export-grade coconut shell charcoal briquette, made from selected coconut shells through a chemical-free carbonization process. Low moisture content (≤8%), low ash content, and high calorific value (≥7,000 kcal/kg), delivering stable heat, minimal smoke, and no odor. Widely used for shisha/hookah, BBQ, and industrial needs in Middle Eastern and European markets. Available in cube, cylinder, and hexagonal shapes to buyer specification."
+      },
+      "featured": false,
+      "initials": "BR",
+      "color": "#44403C",
+      "img": "https://natproindonesia.com/wp-content/uploads/2024/02/briket-kubus.jpeg",
+      "stats": [
+        {
+          "v": "≥7000 kcal/kg",
+          "l": {
+            "id": "Nilai Kalori",
+            "en": "Calorific Value"
+          }
+        },
+        {
+          "v": "≤8%",
+          "l": {
+            "id": "Kadar Air",
+            "en": "Moisture"
+          }
+        },
+        {
+          "v": "10/20 kg",
+          "l": {
+            "id": "Kemasan",
+            "en": "Packaging"
+          }
+        }
+      ],
+      "website": "",
+      "images": [
+        "https://natproindonesia.com/wp-content/uploads/2024/02/briket-kubus.jpeg"
+      ],
+      "categoryKey": "wood-material"
+    },
+    {
+      "id": 69,
+      "name": "Tempe",
+      "category": {
+        "id": "Produk Olahan & Pangan",
+        "en": "Processed Food Products"
+      },
+      "tagline": {
+        "id": "Protein Nabati — Fermentasi Alami",
+        "en": "Plant Protein — Natural Fermentation"
+      },
+      "desc": {
+        "id": "Tempe adalah makanan fermentasi tradisional Indonesia berbahan dasar kedelai pilihan, diproses melalui fermentasi alami menggunakan kapang Rhizopus oligosporus tanpa bahan pengawet. Kaya akan protein nabati lengkap, probiotik, vitamin B12, dan zat besi, menjadikannya pilihan utama bagi pasar vegan dan vegetarian global. Tersedia dalam kemasan beku (frozen) maupun kering untuk ekspor jarak jauh, dengan sertifikasi food grade dan halal.",
+        "en": "Tempe is a traditional Indonesian fermented food made from selected soybeans, naturally fermented using Rhizopus oligosporus mold without preservatives. Rich in complete plant protein, probiotics, vitamin B12, and iron, making it a top choice for the global vegan and vegetarian market. Available in frozen and dried packaging for long-distance export, with food grade and halal certification."
+      },
+      "featured": false,
+      "initials": "TP",
+      "color": "#CA8A04",
+      "img": "https://res.cloudinary.com/dftolrwwi/image/upload/v1782278514/1639022935_Tempe_20Azaki_20Non_20GMO_Cover-01_jwvi5y.jpg",
+      "stats": [
+        {
+          "v": "18–20%",
+          "l": {
+            "id": "Kadar Protein",
+            "en": "Protein Content"
+          }
+        },
+        {
+          "v": "Frozen/Kering",
+          "l": {
+            "id": "Kemasan",
+            "en": "Packaging"
+          }
+        },
+        {
+          "v": "Halal & Food Grade",
+          "l": {
+            "id": "Sertifikasi",
+            "en": "Certification"
+          }
+        }
+      ],
+      "website": "",
+      "images": [
+        "https://res.cloudinary.com/dftolrwwi/image/upload/v1782278514/1639022935_Tempe_20Azaki_20Non_20GMO_Cover-01_jwvi5y.jpg"
+      ],
+      "categoryKey": "processed-food"
     }
   ]
 }

@@ -6,7 +6,10 @@
  *   AboutEditor, BrandsEditor, ProductsEditor, ServicesEditor,
  *   StrukturEditor, PartnersEditor, ContactEditor, FooterEditor, InvestorEditor
  */
+import { useState } from 'react'
 import { Card, CardTitle, Field, Input, Textarea, LocalizedInput, LocalizedTextarea, Select, ItemCard, Btn, Grid2, Divider, Badge, Alert } from '../../components/UI'
+import { uploadToCloudinary, isCloudinaryConfigured } from '../../utils/cloudinary'
+import { cld } from '../../utils/cloudinaryUrl'
 
 const clone = v => JSON.parse(JSON.stringify(v))
 
@@ -26,8 +29,57 @@ const ColorField = ({ label, value, onChange }) => (
 )
 
 const ImgPreview = ({ src }) =>
-  src ? <img src={src} alt="preview" onError={e => e.target.style.display = 'none'}
+  src ? <img src={cld(src, 'q_auto,f_auto,c_scale,w_300')} alt="preview" onError={e => e.target.style.display = 'none'}
     style={{ height: 80, borderRadius: 8, objectFit: 'cover', marginBottom: 14, maxWidth: '100%', display: 'block' }} /> : null
+
+// Input URL gambar + tombol "Upload Foto" yang langsung kirim file ke Cloudinary.
+// Hasil upload otomatis mengisi field URL (tidak perlu copy-paste link manual lagi).
+const ImageUploadField = ({ value, onChange, placeholder = 'https://... atau upload file' }) => {
+  const [uploading, setUploading] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const [error, setError] = useState('')
+
+  const handleFile = async (e) => {
+    const file = e.target.files?.[0]
+    e.target.value = '' // reset agar file yang sama bisa dipilih ulang
+    if (!file) return
+    setError(''); setUploading(true); setProgress(0)
+    try {
+      const url = await uploadToCloudinary(file, { onProgress: setProgress })
+      onChange(url)
+    } catch (err) {
+      setError(err.message || 'Upload gagal.')
+    } finally {
+      setUploading(false)
+    }
+  }
+
+  return (
+    <div>
+      <div style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+        <div style={{ flex: 1 }}>
+          <Input value={value} onChange={onChange} placeholder={placeholder} disabled={uploading} />
+        </div>
+        <label style={{
+          flexShrink: 0, padding: '9px 14px', borderRadius: 8, fontSize: 13, fontWeight: 600,
+          cursor: uploading ? 'default' : 'pointer', whiteSpace: 'nowrap',
+          background: uploading ? '#f3f4f6' : '#ecfdf5', color: uploading ? '#9ca3af' : '#0f766e',
+          border: `1.5px solid ${uploading ? '#e5e7eb' : '#99f6e4'}`,
+        }}>
+          {uploading ? `Uploading ${progress}%` : '📤 Upload Foto'}
+          <input type="file" accept="image/*" onChange={handleFile} disabled={uploading} style={{ display: 'none' }} />
+        </label>
+      </div>
+      {error && <p style={{ fontSize: 12, color: '#dc2626', marginTop: 6 }}>{error}</p>}
+      {!isCloudinaryConfigured() && (
+        <p style={{ fontSize: 11, color: '#d97706', marginTop: 6 }}>
+          ⚠️ Cloudinary belum dikonfigurasi — isi VITE_CLOUDINARY_CLOUD_NAME & VITE_CLOUDINARY_UPLOAD_PRESET di file .env. Untuk sementara kamu masih bisa paste URL manual.
+        </p>
+      )}
+      <ImgPreview src={value} />
+    </div>
+  )
+}
 
 // ─── ABOUT EDITOR ─────────────────────────────────────────────────────────────
 export function AboutEditor({ data, onChange }) {
@@ -208,11 +260,70 @@ export function BrandsEditor({ data, onChange }) {
 
 // ─── PRODUCTS EDITOR ──────────────────────────────────────────────────────────
 export function ProductsEditor({ data, onChange }) {
-  const { header = {}, brands = [], waNumber = '', contactEmail = '' } = data ?? {}
+  const { header = {}, brands = [], categories = [], waNumber = '', contactEmail = '' } = data ?? {}
   const updH = (k,v) => onChange({ ...data, header: { ...header, [k]: v } })
   const updP = (i,k,v) => { const n=clone(brands); n[i][k]=v; onChange({...data,brands:n}) }
+
+  // ── Kategori: tambah / hapus / edit ──
+  // Entry "Semua/All" (key === 'all') dilindungi — key-nya tidak boleh diubah/dihapus
+  // karena dipakai filter "tampilkan semua" di halaman publik.
+  const slugify = (s) => (s||'').toLowerCase().trim()
+    .replace(/&/g,'').replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'')
+  const updCategory = (ci,field,v) => {
+    const n = clone(categories)
+    if (field === 'label.id') n[ci].label.id = v
+    else if (field === 'label.en') n[ci].label.en = v
+    else if (field === 'key') n[ci].key = slugify(v)
+    onChange({ ...data, categories: n })
+  }
+  const addCategory = () => onChange({ ...data, categories: [...categories, { key: '', label: { id: 'Kategori Baru', en: 'New Category' } }] })
+  const removeCategory = (ci) => onChange({ ...data, categories: categories.filter((_,idx)=>idx!==ci) })
+
+  // ── Stats: tambah / hapus / edit ──
   const updStat = (pi,si,k,v) => { const n=clone(brands); n[pi].stats[si][k]=v; onChange({...data,brands:n}) }
-  const addProduct = () => onChange({ ...data, brands: [...brands, { id: Date.now(), name: { id: 'Produk Baru', en: 'New Product' }, category: { id: 'Kategori', en: 'Category' }, tagline: { id: '', en: '' }, desc: { id: '', en: '' }, featured: false, color: '#1BA882', initials: 'P', img: '', website: '', stats: [{v:'0+',l:{ id: 'Stat', en: 'Stat' }}] }] })
+  const addStat = (pi) => { const n=clone(brands); n[pi].stats=[...(n[pi].stats||[]), {v:'0+',l:{id:'Stat',en:'Stat'}}]; onChange({...data,brands:n}) }
+  const removeStat = (pi,si) => { const n=clone(brands); n[pi].stats=(n[pi].stats||[]).filter((_,idx)=>idx!==si); onChange({...data,brands:n}) }
+
+  // ── Foto: tambah / hapus / edit (mendukung lebih dari 1 foto per produk) ──
+  const getImages = (p) => (p.images && p.images.length) ? p.images : (p.img ? [p.img] : [])
+  const updImage = (pi,ii,v) => {
+    const n = clone(brands)
+    const imgs = getImages(n[pi]); imgs[ii] = v
+    n[pi].images = imgs; n[pi].img = imgs[0] || ''
+    onChange({ ...data, brands: n })
+  }
+  const addImage = (pi) => {
+    const n = clone(brands)
+    n[pi].images = [...getImages(n[pi]), '']
+    onChange({ ...data, brands: n })
+  }
+  const removeImage = (pi,ii) => {
+    const n = clone(brands)
+    const imgs = getImages(n[pi]).filter((_,idx)=>idx!==ii)
+    n[pi].images = imgs; n[pi].img = imgs[0] || ''
+    onChange({ ...data, brands: n })
+  }
+
+  // ── Pilih kategori produk lewat dropdown — sinkron category (label) + categoryKey sekaligus ──
+  const assignableCategories = categories.filter(c => c.key !== 'all')
+  const setProductCategory = (pi, key) => {
+    const n = clone(brands)
+    const found = categories.find(c => c.key === key)
+    n[pi].categoryKey = key
+    if (found) n[pi].category = clone(found.label)
+    onChange({ ...data, brands: n })
+  }
+
+  // ── Urutan: naik / turun (urutan ini menentukan urutan tampil di grid publik) ──
+  const moveProduct = (i, dir) => {
+    const j = i + dir
+    if (j < 0 || j >= brands.length) return
+    const n = clone(brands)
+    ;[n[i], n[j]] = [n[j], n[i]]
+    onChange({ ...data, brands: n })
+  }
+
+  const addProduct = () => onChange({ ...data, brands: [...brands, { id: Date.now(), name: { id: 'Produk Baru', en: 'New Product' }, category: assignableCategories[0]?.label ? clone(assignableCategories[0].label) : { id: 'Kategori', en: 'Category' }, categoryKey: assignableCategories[0]?.key || '', tagline: { id: '', en: '' }, desc: { id: '', en: '' }, featured: false, color: '#1BA882', initials: 'P', img: '', images: [''], website: '', stats: [{v:'0+',l:{ id: 'Stat', en: 'Stat' }}] }] })
   const removeProduct = i => onChange({ ...data, brands: brands.filter((_,idx)=>idx!==i) })
 
   return (
@@ -238,16 +349,50 @@ export function ProductsEditor({ data, onChange }) {
         <Field label="Deskripsi"><LocalizedTextarea value={header.desc} onChange={v=>updH('desc',v)} rows={3} /></Field>
       </Card>
 
+      {/* ── Kelola Kategori ── */}
+      <Card>
+        <CardTitle action={<Btn onClick={addCategory} variant="primary" size="sm">+ Tambah Kategori</Btn>}
+          sub="Kategori ini muncul sebagai filter di halaman produk & pilihan dropdown di tiap produk di bawah">
+          Kelola Kategori
+        </CardTitle>
+        {categories.map((c,ci) => (
+          <ItemCard key={ci} label={c.key === 'all' ? 'Filter "Semua" (terkunci)' : `Kategori ${ci}`} accent="#1BA882"
+            onRemove={c.key === 'all' ? undefined : ()=>removeCategory(ci)}>
+            <Grid2>
+              <Field label="Nama (Indonesia)"><Input value={c.label?.id||''} onChange={v=>updCategory(ci,'label.id',v)} /></Field>
+              <Field label="Nama (English)"><Input value={c.label?.en||''} onChange={v=>updCategory(ci,'label.en',v)} /></Field>
+            </Grid2>
+            {c.key === 'all' ? (
+              <p style={{fontSize:12,color:'#9ca3af'}}>Slug: <code>all</code> — tidak bisa diubah, dipakai sistem untuk tombol "tampilkan semua".</p>
+            ) : (
+              <Field label="Slug" hint="huruf kecil tanpa spasi, contoh: coffee-spice — dipakai sistem untuk mencocokkan produk, tidak tampil ke pengunjung">
+                <Input value={c.key} onChange={v=>updCategory(ci,'key',v)} placeholder="coffee-spice" style={{fontFamily:'monospace'}} />
+              </Field>
+            )}
+          </ItemCard>
+        ))}
+      </Card>
+
       {/* ── Produk ── */}
       <Card>
-        <CardTitle action={<Btn onClick={addProduct} variant="primary" size="sm">+ Tambah Produk</Btn>} sub={`${brands.length} produk`}>
+        <CardTitle action={<Btn onClick={addProduct} variant="primary" size="sm">+ Tambah Produk</Btn>} sub={`${brands.length} produk — urutan di sini = urutan tampil di website`}>
           Daftar Produk
         </CardTitle>
         {brands.map((p,i) => (
-          <ItemCard key={p.id||i} label={`${bt(p.name)} — ${bt(p.category)}`} accent={p.color} onRemove={()=>removeProduct(i)}>
+          <ItemCard key={p.id||i} label={`${i+1}. ${bt(p.name)} — ${bt(p.category)}`} accent={p.color}
+            onRemove={()=>removeProduct(i)}
+            onMoveUp={()=>moveProduct(i,-1)} canMoveUp={i>0}
+            onMoveDown={()=>moveProduct(i,1)} canMoveDown={i<brands.length-1}>
             <Grid2>
               <Field label="Nama"><LocalizedInput value={p.name} onChange={v=>updP(i,'name',v)} /></Field>
-              <Field label="Kategori"><LocalizedInput value={p.category} onChange={v=>updP(i,'category',v)} /></Field>
+              <Field label="Kategori" hint="Atur daftar kategori di card 'Kelola Kategori' di atas">
+                <Select value={p.categoryKey || ''} onChange={v=>setProductCategory(i,v)}>
+                  <option value="" disabled>— Pilih kategori —</option>
+                  {assignableCategories.map(c => (
+                    <option key={c.key} value={c.key}>{bt(c.label)}</option>
+                  ))}
+                </Select>
+              </Field>
               <Field label="Tagline"><LocalizedInput value={p.tagline} onChange={v=>updP(i,'tagline',v)} /></Field>
               <Field label="Inisial (2-3 huruf)"><LocalizedInput value={p.initials} onChange={v=>updP(i,'initials',v)} /></Field>
             </Grid2>
@@ -261,15 +406,42 @@ export function ProductsEditor({ data, onChange }) {
               </Field>
             </Grid2>
             <Field label="Deskripsi"><LocalizedTextarea value={p.desc} onChange={v=>updP(i,'desc',v)} rows={2} /></Field>
-            <Field label="URL Gambar"><LocalizedInput value={p.img} onChange={v=>updP(i,'img',v)} placeholder="https://..." /></Field>
-            <ImgPreview src={p.img} />
             <Field label="Website Produk" hint="URL website brand (opsional)"><LocalizedInput value={p.website||''} onChange={v=>updP(i,'website',v)} placeholder="https://tsoecha.co" /></Field>
+
             <Divider />
-            <label style={{fontSize:12,fontWeight:600,color:'#6b7280',textTransform:'uppercase',letterSpacing:'0.05em',display:'block',marginBottom:8}}>Stats</label>
+
+            {/* ── Foto (bisa lebih dari satu — jadi galeri saat card diklik) ── */}
+            <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:8}}>
+              <label style={{fontSize:12,fontWeight:600,color:'#6b7280',textTransform:'uppercase',letterSpacing:'0.05em'}}>
+                Foto Produk {getImages(p).length > 1 && `(${getImages(p).length} foto — jadi galeri)`}
+              </label>
+              <Btn onClick={()=>addImage(i)} variant="outline" size="xs">+ Tambah Slot Foto</Btn>
+            </div>
+            {getImages(p).length === 0 && (
+              <p style={{fontSize:12,color:'#9ca3af',marginBottom:10}}>Belum ada foto. Klik "+ Tambah Slot Foto", lalu upload atau paste URL.</p>
+            )}
+            {getImages(p).map((img, ii) => (
+              <div key={ii} style={{display:'flex',gap:8,marginBottom:10,alignItems:'flex-start'}}>
+                <Badge color="#9ca3af" style={{flexShrink:0,marginTop:9}}>{ii+1}</Badge>
+                <div style={{flex:1}}>
+                  <ImageUploadField value={img} onChange={v=>updImage(i,ii,v)} />
+                </div>
+                <Btn onClick={()=>removeImage(i,ii)} variant="danger" size="xs" style={{flexShrink:0,marginTop:2}}>×</Btn>
+              </div>
+            ))}
+
+            <Divider />
+
+            {/* ── Stats (bisa lebih dari 2 — yang tampil di card hanya 2 pertama) ── */}
+            <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:8}}>
+              <label style={{fontSize:12,fontWeight:600,color:'#6b7280',textTransform:'uppercase',letterSpacing:'0.05em'}}>Stats</label>
+              <Btn onClick={()=>addStat(i)} variant="outline" size="xs">+ Tambah Stat</Btn>
+            </div>
             {(p.stats||[]).map((st,si) => (
-              <div key={si} style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:8,marginBottom:6}}>
+              <div key={si} style={{display:'grid',gridTemplateColumns:'1fr 1fr auto',gap:8,marginBottom:6,alignItems:'start'}}>
                 <LocalizedInput value={st.v} onChange={v=>updStat(i,si,'v',v)} placeholder="Nilai" />
                 <LocalizedInput value={st.l} onChange={v=>updStat(i,si,'l',v)} placeholder="Label" />
+                <Btn onClick={()=>removeStat(i,si)} variant="danger" size="xs">×</Btn>
               </div>
             ))}
           </ItemCard>

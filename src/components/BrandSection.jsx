@@ -118,5 +118,4 @@ export default function BrandSection() {
       </div>
     </section>
   )
-  ))
 }

@@ -198,11 +198,25 @@ export const Toggle = ({ value, onChange, label }) => (
   </label>
 )
 
-export const ItemCard = ({ children, onRemove, label, accent }) => (
+export const ItemCard = ({ children, onRemove, label, accent, onMoveUp, onMoveDown, canMoveUp = true, canMoveDown = true }) => (
   <div style={{ border: '1.5px solid #f0f0f0', borderRadius: 12, padding: '16px', marginBottom: 14, borderLeft: accent ? `4px solid ${accent}` : undefined }}>
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
       {label && <Badge color={accent || '#6b7280'}>{label}</Badge>}
-      {onRemove && <Btn onClick={onRemove} variant="danger" size="xs">Hapus</Btn>}
+      <div style={{ display: 'flex', gap: 6, marginLeft: 'auto' }}>
+        {(onMoveUp || onMoveDown) && (
+          <div style={{ display: 'flex', gap: 2, marginRight: 4 }}>
+            {onMoveUp && (
+              <Btn onClick={onMoveUp} variant="outline" size="xs" disabled={!canMoveUp}
+                style={{ padding: '4px 9px' }} title="Naikkan urutan">↑</Btn>
+            )}
+            {onMoveDown && (
+              <Btn onClick={onMoveDown} variant="outline" size="xs" disabled={!canMoveDown}
+                style={{ padding: '4px 9px' }} title="Turunkan urutan">↓</Btn>
+            )}
+          </div>
+        )}
+        {onRemove && <Btn onClick={onRemove} variant="danger" size="xs">Hapus</Btn>}
+      </div>
     </div>
     {children}
   </div>
