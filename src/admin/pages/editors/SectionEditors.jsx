@@ -34,7 +34,7 @@ const ImgPreview = ({ src }) =>
 
 // Input URL gambar + tombol "Upload Foto" yang langsung kirim file ke Cloudinary.
 // Hasil upload otomatis mengisi field URL (tidak perlu copy-paste link manual lagi).
-const ImageUploadField = ({ value, onChange, placeholder = 'https://... atau upload file' }) => {
+const ImageUploadField = ({ value, onChange, placeholder = 'https://... atau upload file', folder = 'ptboba' }) => {
   const [uploading, setUploading] = useState(false)
   const [progress, setProgress] = useState(0)
   const [error, setError] = useState('')
@@ -45,7 +45,7 @@ const ImageUploadField = ({ value, onChange, placeholder = 'https://... atau upl
     if (!file) return
     setError(''); setUploading(true); setProgress(0)
     try {
-      const url = await uploadToCloudinary(file, { onProgress: setProgress })
+      const url = await uploadToCloudinary(file, { folder, onProgress: setProgress })
       onChange(url)
     } catch (err) {
       setError(err.message || 'Upload gagal.')
@@ -599,7 +599,7 @@ export function StrukturEditor({ data, onChange }) {
       </Card>
 
       <Card>
-        <CardTitle action={<Btn onClick={addMember} variant="primary" size="sm">+ Tambah</Btn>} sub="Foto: upload ke /public/founders/">
+        <CardTitle action={<Btn onClick={addMember} variant="primary" size="sm">+ Tambah</Btn>} sub="Foto langsung upload ke Cloudinary (folder: ptboba/tim)">
           Pendiri & Pengurus
         </CardTitle>
         {(founders.members||[]).map((m,i) => (
@@ -608,8 +608,9 @@ export function StrukturEditor({ data, onChange }) {
               <Field label="Nama Lengkap"><LocalizedInput value={m.name} onChange={v=>updM(i,'name',v)} /></Field>
               <Field label="Jabatan"><LocalizedInput value={m.role} onChange={v=>updM(i,'role',v)} /></Field>
             </Grid2>
-            <Field label="Path Foto" hint="Contoh: /founders/nama.jpg"><LocalizedInput value={m.photo||''} onChange={v=>updM(i,'photo',v)} placeholder="/founders/nama.jpg" /></Field>
-            {m.photo && <ImgPreview src={m.photo} />}
+            <Field label="Foto" hint="Klik 📤 untuk upload langsung ke Cloudinary, atau paste URL manual">
+              <ImageUploadField value={m.photo||''} onChange={v=>updM(i,'photo',v)} folder="ptboba/tim" placeholder="https://res.cloudinary.com/... atau upload file" />
+            </Field>
             <Field label="Deskripsi Peran"><LocalizedTextarea value={m.desc} onChange={v=>updM(i,'desc',v)} rows={3} /></Field>
           </ItemCard>
         ))}
